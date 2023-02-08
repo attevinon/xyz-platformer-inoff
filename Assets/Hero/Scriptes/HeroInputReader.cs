@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HeroInputReader : MonoBehaviour
 {
@@ -12,67 +13,21 @@ public class HeroInputReader : MonoBehaviour
     }
     void Update()
     {
-        ///<summary>
-        ///Работает, но движение идёт рывками и нет движения по диагонали
-        ///Раскомментить чтобы протестировать
-        ///</summary>
-        /*GetKeyMovementInput();
-        GetKeyAttackInput();*/
-
-        LegacyAxesInput();
-        LegacyAttackInput();
+        //нет необходимости дёргать с вопросом "а чё а нажали уже кнопку??"
+        //всё работает по ивентам
+        //так что тут пусто......
     }
-
-    #region LegacyVirtualInput
-    private void LegacyAttackInput()
+    public void OnAttackInput(InputAction.CallbackContext callback)
     {
-        if (Input.GetButtonUp("Attack"))
+        if (callback.canceled)
         {
             _hero.Attack();
         }
     }
 
-    private void LegacyAxesInput()
+    public void OnAxesInput(InputAction.CallbackContext callback)
     {
-        var _horizontal = Input.GetAxis("Horizontal");
-        var _vertical = Input.GetAxis("Vertical");
-        _hero.SetDirection(_horizontal, _vertical);
+        var direction = callback.ReadValue<Vector2>();
+        _hero.SetDirection(direction);
     }
-    #endregion
-
-    #region KeyboardManualInput
-    private void GetKeyMovementInput()
-    {
-        if (Input.GetKey(KeyCode.D))
-        {
-            _hero.SetDirection(1, 0);
-        } 
-        else if (Input.GetKey(KeyCode.A))
-        {
-            _hero.SetDirection(-1, 0);
-        }
-        else if (Input.GetKey(KeyCode.W))
-        {
-            _hero.SetDirection(0, 1);
-
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            _hero.SetDirection(0, -1);
-
-        }
-        else
-        {
-            _hero.SetDirection(0, 0);
-        }
-    }
-
-    private void GetKeyAttackInput()
-    {
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            _hero.Attack();
-        }
-    }
-    #endregion
 }
