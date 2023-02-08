@@ -17,17 +17,14 @@ public class HeroInputReader : MonoBehaviour
         //всё работает по ивентам
         //так что тут пусто......
     }
-    public void OnAttackInput(InputAction.CallbackContext callback)
+    private void OnAttack(InputValue callback)
     {
-        if (callback.canceled)
-        {
-            _hero.Attack();
-        }
+        _hero.Attack();
     }
 
-    public void OnAxesInput(InputAction.CallbackContext callback)
+    private void OnMovement(InputValue callback)
     {
-        var direction = callback.ReadValue<Vector2>();
+        var direction = callback.Get<Vector2>();
         _hero.SetDirection(direction);
     }
 }
