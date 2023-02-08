@@ -6,10 +6,20 @@ using UnityEngine.InputSystem;
 public class HeroInputReader : MonoBehaviour
 {
     [SerializeField] private HeroScript _hero;
+    private HeroInputActions _inputAction;
 
     private void Awake()
     {
-        _hero = GetComponent<HeroScript>();
+        _inputAction = new HeroInputActions();
+
+        _inputAction.Hero.MovementVector2D.performed += OnAxesInput;
+        _inputAction.Hero.MovementVector2D.canceled += OnAxesInput;
+        _inputAction.Hero.Attack.canceled += OnAttackInput;
+    }
+
+    private void OnEnable()
+    {
+        _inputAction.Enable();
     }
     void Update()
     {
