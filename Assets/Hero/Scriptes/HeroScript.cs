@@ -6,20 +6,17 @@ public class HeroScript : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
+    private Rigidbody2D _rigidbody;
     private Vector2 _direction;
 
-    void Update()
+    private void Awake()
     {
-        Movement();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    //оставила эту перегрузку, чтобы при необходимости изменить способ ввода
-    //не приходилось изменять код в данном скрипте
-    //(это ваще правильно или не надо так делать?....)
-    public void SetDirection(float direction_x, float direction_y)
+    void FixedUpdate()
     {
-        _direction.x = direction_x;
-        _direction.y = direction_y;
+        Movement();
     }
 
     public void SetDirection(Vector2 direction)
@@ -27,24 +24,12 @@ public class HeroScript : MonoBehaviour
         _direction = direction;
     }
 
-    //что-то внутри подсказало мне добавить возвращаемое значение...
     /// <summary>
     /// Обеспечивает движение героя
     /// </summary>
-    /// <returns>
-    /// true, если положение героя изменилось;
-    /// false, если положение героя не изменилось
-    /// </returns>
-    private bool Movement()
+    private void Movement()
     {
-        if (_direction.magnitude > 0)
-        {
-            Vector2 delta = _direction * _speed * Time.deltaTime;
-            transform.position += new Vector3(delta.x, delta.y);
-            return true;
-        }
-        else
-            return false;
+        _rigidbody.velocity = new Vector2(_direction.x, _rigidbody.velocity.y);
     }
 
     public void Attack()
