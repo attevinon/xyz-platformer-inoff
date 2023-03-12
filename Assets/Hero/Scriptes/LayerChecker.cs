@@ -25,9 +25,10 @@ public class LayerChecker : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = (isTouchingLayer) ? Color.yellow : Color.cyan;
-
         if(_collider != null)
-            Gizmos.DrawSphere(transform.position, _collider.bounds.extents.y);
+        {
+            Gizmos.color = (isTouchingLayer) ? Color.yellow : Color.cyan;
+            Gizmos.DrawCube(transform.position, _collider.bounds.size);
+        }
     }
 }
