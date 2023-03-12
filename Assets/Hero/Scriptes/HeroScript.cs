@@ -5,21 +5,22 @@ using UnityEngine;
 public class HeroScript : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private float _jumpForce;
 
+    [SerializeField] private LayerChecker _groundCheker;
+
+    private Rigidbody2D _rigidbody;
     private Vector2 _direction;
 
-    void Update()
+    private void Awake()
     {
-        Movement();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    //оставила эту перегрузку, чтобы при необходимости изменить способ ввода
-    //не приходилось изменять код в данном скрипте
-    //(это ваще правильно или не надо так делать?....)
-    public void SetDirection(float direction_x, float direction_y)
+    void FixedUpdate()
     {
-        _direction.x = direction_x;
-        _direction.y = direction_y;
+        Movement();
+        Jumping();
     }
 
     public void SetDirection(Vector2 direction)
@@ -27,24 +28,32 @@ public class HeroScript : MonoBehaviour
         _direction = direction;
     }
 
-    //что-то внутри подсказало мне добавить возвращаемое значение...
     /// <summary>
     /// Обеспечивает движение героя
     /// </summary>
-    /// <returns>
-    /// true, если положение героя изменилось;
-    /// false, если положение героя не изменилось
-    /// </returns>
-    private bool Movement()
+    private void Movement()
     {
-        if (_direction.magnitude > 0)
+        _rigidbody.velocity = new Vector2(_direction.x * _speed, _rigidbody.velocity.y);
+    }
+
+    private void Jumping()
+    {
+        if (_direction.y > 0)
         {
-            Vector2 delta = _direction * _speed * Time.deltaTime;
-            transform.position += new Vector3(delta.x, delta.y);
-            return true;
+            if (IsGrounded())
+            {
+                _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            }
         }
-        else
-            return false;
+        else if (_rigidbody.velocity.y > 0)
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y * 0.5f);
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        return _groundCheker.isTouchingLayer;
     }
 
     public void Attack()
