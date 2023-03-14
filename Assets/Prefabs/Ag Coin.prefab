@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8367093691836094812}
   - component: {fileID: 8367093691836094813}
   - component: {fileID: 8367093691836094802}
+  - component: {fileID: -5568784954555567144}
   - component: {fileID: 8367093691836094803}
   m_Layer: 0
   m_Name: Ag Coin
@@ -131,6 +132,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -5568784954555567144}
+        m_TargetAssemblyTypeName: ScoreComponent, Assembly-CSharp
+        m_MethodName: IncreaseScore
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-5568784954555567144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367093691836094800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720f2fb66008d2345886a61a60aa8287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 3108164122121364652, guid: f4d71a0eac0853e41ba58b15ebc538f5, type: 3}
 --- !u!114 &8367093691836094803
 MonoBehaviour:
   m_ObjectHideFlags: 0
