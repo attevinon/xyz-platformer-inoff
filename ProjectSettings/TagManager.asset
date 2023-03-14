@@ -47,6 +47,9 @@ TagManager:
   - name: Platforms
     uniqueID: 689846041
     locked: 0
+  - name: Props
+    uniqueID: 4229148667
+    locked: 0
   - name: Hero
     uniqueID: 640079265
     locked: 0
