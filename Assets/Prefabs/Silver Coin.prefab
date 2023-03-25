@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5568784954555567144}
   - component: {fileID: 8367093691836094803}
   m_Layer: 0
-  m_Name: Ag Coin
+  m_Name: Silver Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,8 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720f2fb66008d2345886a61a60aa8287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 3108164122121364652, guid: f4d71a0eac0853e41ba58b15ebc538f5,
-    type: 3}
+  scoreText: {fileID: 0}
 --- !u!114 &8367093691836094803
 MonoBehaviour:
   m_ObjectHideFlags: 0
