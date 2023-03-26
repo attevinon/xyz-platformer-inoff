@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8367093691836094815}
   - component: {fileID: 8367093691836094812}
   - component: {fileID: 8367093691836094813}
-  - component: {fileID: -5110958622755043560}
+  - component: {fileID: 2272131286936799278}
   - component: {fileID: 8367093691836094802}
   - component: {fileID: -5568784954555567144}
   - component: {fileID: 8367093691836094803}
@@ -103,7 +103,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.171875
---- !u!114 &-5110958622755043560
+--- !u!114 &2272131286936799278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,15 +116,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 1
-  _sprites:
-  - {fileID: -240399129463944129, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
-  - {fileID: 699891148711611904, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
-  - {fileID: 1721960131801997513, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
-  - {fileID: 8210797105081687696, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  _states:
+  - _name: idle
+    _loop: 1
+    _allowNext: 0
+    _sprites:
+    - {fileID: -240399129463944129, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
+    - {fileID: 699891148711611904, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
+    - {fileID: 1721960131801997513, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
+    - {fileID: 8210797105081687696, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - _name: destroy
+    _loop: 0
+    _allowNext: 0
+    _sprites:
+    - {fileID: -434526571243985550, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
+    - {fileID: 1491313944902218899, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
+    - {fileID: -820387346231533576, guid: 17e8ed60961a1924facc7c4f240b5f7d, type: 3}
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8367093691836094803}
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &8367093691836094802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,15 +165,15 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8367093691836094803}
-        m_MethodName: DestroyObject
-        m_Mode: 1
+      - m_Target: {fileID: 2272131286936799278}
+        m_MethodName: SetClip
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: -5568784954555567144}
