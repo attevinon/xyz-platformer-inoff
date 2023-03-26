@@ -9,9 +9,11 @@ public class HeroScript : MonoBehaviour
 
     [SerializeField] private LayerChecker _groundCheker;
 
+    private Vector2 _direction;
+
     private Rigidbody2D _rigidbody;
     private Animator _animator;
-    private Vector2 _direction;
+    private SpriteRenderer _sprite;
 
     static readonly int isRunningKey = Animator.StringToHash("is-running");
     static readonly int isGroundedKey = Animator.StringToHash("is-grounded");
@@ -21,6 +23,7 @@ public class HeroScript : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -28,6 +31,7 @@ public class HeroScript : MonoBehaviour
         Movement();
         Jumping();
         SetAnimationKeys();
+        UpdateSpriteDirection();
     }
 
     public void SetDirection(Vector2 direction)
@@ -63,6 +67,21 @@ public class HeroScript : MonoBehaviour
         _animator.SetBool(isRunningKey, _direction.x != 0);
         _animator.SetBool(isGroundedKey, IsGrounded());
         _animator.SetFloat(verticalVelocityKey, _rigidbody.velocity.y);
+    }
+
+    private void UpdateSpriteDirection()
+    {
+        if (_direction.x == 0)
+            return;
+
+        if(_direction.x > 0)
+        {
+            _sprite.flipX = false;
+        }
+        else if (_direction.x < 0)
+        {
+            _sprite.flipX = true;
+        }
     }
 
     private bool IsGrounded()
