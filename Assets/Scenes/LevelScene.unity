@@ -516,7 +516,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -0.39999986, z: -10}
+  m_LocalPosition: {x: -2, y: -0.39999986, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -576,6 +576,12 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!4 &591899005 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2244786681484811453, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120934097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &620683446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -833,7 +839,7 @@ GameObject:
   - component: {fileID: 875424361}
   - component: {fileID: 875424363}
   - component: {fileID: 875424362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,7 +1505,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 591899005}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 3
@@ -1523,7 +1529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880594170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -0.39999986, z: -10}
+  m_LocalPosition: {x: -2, y: -0.39999986, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1098599934}
@@ -1818,7 +1824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1063362950}
   - component: {fileID: 1063362949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2899,7 +2905,7 @@ GameObject:
   - component: {fileID: 1812930096}
   - component: {fileID: 1812930095}
   - component: {fileID: 1812930098}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Outdoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6657,10 +6663,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2244786681484811426, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2244786681484811428, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
         type: 3}
       propertyPath: m_Name
       value: 'Hero '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244786681484811430, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.87328225
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244786681484811430, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.43835887
       objectReference: {fileID: 0}
     - target: {fileID: 2244786681484811453, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
         type: 3}
@@ -6670,7 +6691,7 @@ PrefabInstance:
     - target: {fileID: 2244786681484811453, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2244786681484811453, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
         type: 3}
