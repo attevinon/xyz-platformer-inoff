@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4484469235877827323}
   - component: {fileID: 2332773872020910108}
   - component: {fileID: 4484469235877827321}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0007867813, y: 0.390625}
+  m_Offset: {x: 0.0007867813, y: 0.39428532}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5940511, y: 0.78125}
+  m_Size: {x: 0.5940511, y: 0.77392936}
   m_EdgeRadius: 0
 --- !u!50 &4484469235877827321
 Rigidbody2D:
