@@ -210,9 +210,9 @@ TextureImporter:
       name: PalmTreeBackgroundRight_4
       rect:
         serializedVersion: 2
-        x: 261
+        x: 260
         y: 7
-        width: 51
+        width: 52
         height: 53
       alignment: 8
       pivot: {x: 1, y: 0}
@@ -252,9 +252,9 @@ TextureImporter:
       name: PalmTreeBackgroundRight_6
       rect:
         serializedVersion: 2
-        x: 389
+        x: 388
         y: 7
-        width: 51
+        width: 52
         height: 53
       alignment: 8
       pivot: {x: 1, y: 0}

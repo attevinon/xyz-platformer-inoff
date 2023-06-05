@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8651372801718003394}
   - component: {fileID: 8651372801718003395}
-  - component: {fileID: 5100338948867978795}
+  - component: {fileID: -1820175015243364850}
   m_Layer: 0
   m_Name: PalmTreeBackgroundRight
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5100338948867978795
+--- !u!114 &-1820175015243364850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,12 +96,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 1
-  _sprites:
-  - {fileID: -2645899244835350471, guid: f3cba1d6a533b1c48961c94588862b88, type: 3}
-  - {fileID: -6487789065682943626, guid: f3cba1d6a533b1c48961c94588862b88, type: 3}
-  - {fileID: 1981876992937066421, guid: f3cba1d6a533b1c48961c94588862b88, type: 3}
-  - {fileID: 7744047822205964645, guid: f3cba1d6a533b1c48961c94588862b88, type: 3}
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  _states:
+  - _name: 
+    _loop: 1
+    _allowNext: 0
+    _sprites:
+    - {fileID: -2645899244835350471, guid: f3cba1d6a533b1c48961c94588862b88, type: 3}
+    - {fileID: -6487789065682943626, guid: f3cba1d6a533b1c48961c94588862b88, type: 3}
+    - {fileID: 1981876992937066421, guid: f3cba1d6a533b1c48961c94588862b88, type: 3}
+    - {fileID: 7744047822205964645, guid: f3cba1d6a533b1c48961c94588862b88, type: 3}
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []
