@@ -11,6 +11,10 @@ public class HeroScript : MonoBehaviour
 
     private Vector2 _direction;
 
+    private bool _isGrounded;
+    private bool _allowDoubleJump;
+    private bool _isJumping;
+
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private SpriteRenderer _sprite;
@@ -26,10 +30,18 @@ public class HeroScript : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
     }
 
+    void Update()
+    {
+        _isGrounded = IsGrounded();
+    }
+
     void FixedUpdate()
     {
-        Movement();
-        Jumping();
+        float xVelocity = _direction.x * _speed;
+        float yVelocity = CalculateYVelocity();
+
+        _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
+
         SetAnimationKeys();
         UpdateSpriteDirection();
     }
@@ -39,33 +51,54 @@ public class HeroScript : MonoBehaviour
         _direction = direction;
     }
 
-    /// <summary>
-    /// Обеспечивает движение героя
-    /// </summary>
-    private void Movement()
+    private float CalculateYVelocity()
     {
-        _rigidbody.velocity = new Vector2(_direction.x * _speed, _rigidbody.velocity.y);
+        float yVelocity = _rigidbody.velocity.y;
+        bool isJumpPressing = _direction.y > 0;
+
+        if (_isGrounded)
+        {
+            _allowDoubleJump = true;
+            _isJumping = false;
+        }
+
+        if (isJumpPressing)
+        {
+            _isJumping = true;
+            yVelocity = CalculateJumpVelocity(yVelocity);
+        }
+        else if (_rigidbody.velocity.y > 0 && _isJumping) //падение
+        {
+            yVelocity *= 0.5f;
+        }
+
+        return yVelocity;
     }
 
-    private void Jumping()
+    private float CalculateJumpVelocity(float yVelocity)
     {
-        if (_direction.y > 0)
+        bool isFalling = _rigidbody.velocity.y <= 0.001f;
+        if (!isFalling) return yVelocity;
+
+        if (_isGrounded)
         {
-            if (IsGrounded())
-            {
-                _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-            }
+            //_rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            yVelocity += _jumpForce;
         }
-        else if (_rigidbody.velocity.y > 0)
+
+        else if (_allowDoubleJump)
         {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y * 0.5f);
+            yVelocity = _jumpForce;
+            _allowDoubleJump = false;
         }
+
+        return yVelocity;
     }
 
     private void SetAnimationKeys()
     {
         _animator.SetBool(isRunningKey, _direction.x != 0);
-        _animator.SetBool(isGroundedKey, IsGrounded());
+        _animator.SetBool(isGroundedKey, _isGrounded);
         _animator.SetFloat(verticalVelocityKey, _rigidbody.velocity.y);
     }
 
