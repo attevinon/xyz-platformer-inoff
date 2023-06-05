@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 642157505837537362}
   - component: {fileID: 642157505837537363}
   - component: {fileID: 2457297160978787253}
-  m_Layer: 0
+  - component: {fileID: 4434934225147604306}
+  - component: {fileID: 2332551902684172013}
+  m_Layer: 8
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +94,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.5, y: 0.25123462}
@@ -108,3 +110,43 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.50246924}
   m_EdgeRadius: 0
+--- !u!114 &4434934225147604306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642157505837537373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8f0b1c36374874499fc57856ff64c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: Player
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2332551902684172013}
+        m_MethodName: DamageAnObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2332551902684172013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642157505837537373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbd1ace3c1ad904081142d4737005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageValue: 3

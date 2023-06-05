@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2244786681484811426}
   - component: {fileID: 4502786918791685396}
   - component: {fileID: 2244786681484811427}
+  - component: {fileID: 6087202584541998069}
   - component: {fileID: 2244786681484811424}
   - component: {fileID: 2244786681484811425}
   - component: {fileID: 2244786681484811430}
@@ -121,7 +122,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _jumpForce: 8
+  _jumpDamageForce: 5
   _groundCheker: {fileID: 2244786681510140030}
+--- !u!114 &6087202584541998069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244786681484811428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6ea07978578ac4e84c999da12c83e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 10
+  _onDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2244786681484811427}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2244786681484811424
 MonoBehaviour:
   m_ObjectHideFlags: 0

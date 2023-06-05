@@ -6,6 +6,7 @@ public class HeroScript : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _jumpDamageForce;
 
     [SerializeField] private LayerChecker _groundCheker;
 
@@ -22,6 +23,7 @@ public class HeroScript : MonoBehaviour
     static readonly int isRunningKey = Animator.StringToHash("is-running");
     static readonly int isGroundedKey = Animator.StringToHash("is-grounded");
     static readonly int verticalVelocityKey = Animator.StringToHash("vertical-velocity");
+    static readonly int hitKey = Animator.StringToHash("hit");
 
     private void Awake()
     {
@@ -125,5 +127,11 @@ public class HeroScript : MonoBehaviour
     public void Attack()
     {
         Debug.Log("ATTACK!!!!!!!!!!");
+    }
+
+    public void TakeDamage()
+    {
+        _animator.SetTrigger(hitKey);
+        _rigidbody.velocity = Vector2.up * _jumpDamageForce;
     }
 }
