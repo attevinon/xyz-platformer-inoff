@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2160960290869816530}
   - component: {fileID: 6138405464829424917}
   - component: {fileID: 233130230573769186}
-  - component: {fileID: 1539270687061531469}
+  - component: {fileID: 2959741692560880923}
   - component: {fileID: 6620824666778361455}
+  - component: {fileID: 6073291640075723660}
   - component: {fileID: 8756563493194138594}
   m_Layer: 0
   m_Name: Heal Potion
@@ -136,7 +137,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1539270687061531469
+--- !u!114 &2959741692560880923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +146,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 911652109272387950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f211003c51193bb4a802f90d9fad9ef9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dbd1ace3c1ad904081142d4737005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _impactValue: 5
+--- !u!114 &6620824666778361455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911652109272387950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2370de0c442f00648b9bd9d1b1361abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 911652109272387950}
+--- !u!114 &6073291640075723660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911652109272387950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8f0b1c36374874499fc57856ff64c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tag: Player
@@ -163,19 +190,17 @@ MonoBehaviour:
           m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6620824666778361455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911652109272387950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2370de0c442f00648b9bd9d1b1361abe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 911652109272387950}
+      - m_Target: {fileID: 2959741692560880923}
+        m_MethodName: AffectTheObjectsHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!70 &8756563493194138594
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -186,7 +211,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

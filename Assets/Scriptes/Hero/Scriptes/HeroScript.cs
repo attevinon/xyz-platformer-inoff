@@ -139,6 +139,11 @@ public class HeroScript : MonoBehaviour
         _rigidbody.velocity = Vector2.up * _jumpDamageForce;
     }
 
+    public void TakeHealing()
+    {
+
+    }
+
     public void Interact()
     {
         int size = Physics2D.OverlapCircleNonAlloc(

@@ -7,20 +7,30 @@ public class HealthComponent : MonoBehaviour
 {
     [SerializeField] private int _health;
     [SerializeField] private UnityEvent _onDamage;
+    [SerializeField] private UnityEvent _onHeal;
     [SerializeField] private UnityEvent _onDie;
 
-    public void ApplyDamage(int damageValue)
+    public void ApplyHealthImpact(int impactValue)
     {
-        _health -= damageValue;
+        _health += impactValue;
 
-        if(_health <= 0)
+        if (impactValue > 0)
         {
-            _onDie?.Invoke();
+            _onHeal?.Invoke();
         }
-        else
+        else if (impactValue < 0)
         {
-            _onDamage?.Invoke();
-            Debug.Log("your health = " + _health);
+            if (_health <= 0)
+            {
+                _onDie?.Invoke();
+            }
+            else
+            {
+                _onDamage?.Invoke();
+            }
+            
         }
+        
+        Debug.Log("your health = " + _health);
     }
 }
