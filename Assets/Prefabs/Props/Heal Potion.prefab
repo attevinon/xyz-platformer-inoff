@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 233130230573769186}
   - component: {fileID: 2959741692560880923}
   - component: {fileID: 6620824666778361455}
-  - component: {fileID: 6073291640075723660}
+  - component: {fileID: 5831141702331307414}
   - component: {fileID: 8756563493194138594}
   m_Layer: 0
   m_Name: Heal Potion
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 911652109272387950}
---- !u!114 &6073291640075723660
+--- !u!114 &5831141702331307414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 911652109272387950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f8f0b1c36374874499fc57856ff64c9, type: 3}
+  m_Script: {fileID: 11500000, guid: f211003c51193bb4a802f90d9fad9ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tag: Player
@@ -211,7 +211,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
