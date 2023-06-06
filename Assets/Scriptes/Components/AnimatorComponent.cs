@@ -33,16 +33,6 @@ public class AnimatorComponent : MonoBehaviour
         StartAnimation();
     }
 
-    private void OnBecameVisible()
-    {
-        enabled = _isPlaying;
-    }
-
-    private void OnBecameInvisible()
-    {
-        enabled = false;
-    }
-
     private void Update()
     {
         if (_nextFrameTime > Time.time)
