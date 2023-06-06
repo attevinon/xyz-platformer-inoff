@@ -10,6 +10,10 @@ public class HeroScript : MonoBehaviour
 
     [SerializeField] private LayerChecker _groundCheker;
 
+    [SerializeField] private LayerMask _interactionLayer;
+    [SerializeField] private float _interactionRadius;
+
+    private Collider2D[] _interactionResult = new Collider2D[1];
     private Vector2 _direction;
 
     private bool _isGrounded;
@@ -133,5 +137,24 @@ public class HeroScript : MonoBehaviour
     {
         _animator.SetTrigger(hitKey);
         _rigidbody.velocity = Vector2.up * _jumpDamageForce;
+    }
+
+    public void Interact()
+    {
+        int size = Physics2D.OverlapCircleNonAlloc(
+            transform.position,
+            _interactionRadius,
+            _interactionResult,
+            _interactionLayer);
+
+        for (int i = 0; i < size; i++)
+        {
+            var interactable = _interactionResult[i].GetComponent<InteractableComponent>();
+
+            if(interactable != null)
+            {
+                interactable.Interact();
+            }
+        }
     }
 }

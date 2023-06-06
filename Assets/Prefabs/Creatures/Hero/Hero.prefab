@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2244786681484811453}
   - component: {fileID: 2244786681484811426}
-  - component: {fileID: 4502786918791685396}
   - component: {fileID: 2244786681484811427}
   - component: {fileID: 6087202584541998069}
   - component: {fileID: 2244786681484811424}
   - component: {fileID: 2244786681484811425}
+  - component: {fileID: 4502786918791685396}
   - component: {fileID: 2244786681484811430}
   - component: {fileID: 2244786681484811431}
   m_Layer: 0
@@ -89,25 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!95 &4502786918791685396
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2244786681484811428}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b6f7b8a06fd481c4ea5b2735840c5fb1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2244786681484811427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +105,10 @@ MonoBehaviour:
   _jumpForce: 8
   _jumpDamageForce: 5
   _groundCheker: {fileID: 2244786681510140030}
+  _interactionLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _interactionRadius: 1
 --- !u!114 &6087202584541998069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,11 +219,45 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7b849df9-1e44-4fa4-8825-7789290e144c
     m_ActionName: Hero/Attack[/Keyboard/c,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2244786681484811427}
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 51252734-ddea-488e-a94f-51559a7ed5f8
+    m_ActionName: Hero/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &4502786918791685396
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244786681484811428}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6f7b8a06fd481c4ea5b2735840c5fb1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!70 &2244786681484811430
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
