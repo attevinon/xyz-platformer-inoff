@@ -178,7 +178,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: -3247483116460493250}
         m_MethodName: IncreaseScore
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -199,7 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720f2fb66008d2345886a61a60aa8287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
+  _coinValue: 10
+  _hero: {fileID: 2244786681484811427, guid: e8ca359dc2fb47a40b4d80cf60107b0f, type: 3}
 --- !u!114 &-8440152524185972075
 MonoBehaviour:
   m_ObjectHideFlags: 0

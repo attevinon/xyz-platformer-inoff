@@ -3031,6 +3031,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b917ce14b2841e448aab436fd2d4194d, type: 3}
+--- !u!114 &754797002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2244786681484811427, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1827135109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533feb3cae1e1af4ea438ed64e381fe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832091566
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,9 +3200,8 @@ MonoBehaviour:
     action:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -3247483116460493250, guid: e06c2cc0150b7594a8f9fdc928512454,
-            type: 3}
-          m_MethodName: IncreaseScore
+        - m_Target: {fileID: 754797002}
+          m_MethodName: RefillScore
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3206,6 +3217,21 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 674271998}
           m_MethodName: Restart
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: door
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1164535211}
+          m_MethodName: Switch
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

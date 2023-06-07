@@ -18,6 +18,8 @@ public class HeroScript : MonoBehaviour
     private Collider2D[] _interactionResult = new Collider2D[1];
     private Vector2 _direction;
 
+    private int _score;
+
     private bool _isGrounded;
     private bool _allowDoubleJump;
     private bool _isJumping;
@@ -34,6 +36,11 @@ public class HeroScript : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        _score = 0;
     }
 
     void Update()
@@ -152,6 +159,12 @@ public class HeroScript : MonoBehaviour
     public void TakeHealing()
     {
         //хочу сюда анимацию добавить
+    }
+
+    public void RefillScore(int value)
+    {
+        _score += value;
+        Debug.Log("Score: " + _score);
     }
 
     public void Interact()
