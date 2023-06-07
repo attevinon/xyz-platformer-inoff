@@ -148,12 +148,23 @@ public class HeroScript : MonoBehaviour
         _animator.SetTrigger(hitKey);
         _rigidbody.velocity = Vector2.up * _jumpDamageForce;
 
-
+        if (_score > 0)
+        {
+            DropCoins();
+        }
     }
 
-    public void DropCoins()
+    private void DropCoins()
     {
+        int coinsToDrop = Mathf.Min(_score, 5);
+        _score -= coinsToDrop;
 
+        var coinsBurst = _coinsParticles.emission.GetBurst(0);
+        coinsBurst.count = coinsToDrop;
+        _coinsParticles.emission.SetBurst(0, coinsBurst);
+
+        _coinsParticles.gameObject.SetActive(true);
+        _coinsParticles.Play();
     }
 
     public void TakeHealing()
