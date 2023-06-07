@@ -25,6 +25,14 @@ public class HeroInputReader : MonoBehaviour
         }
     }
 
+    public void OnInteractionInput(InputAction.CallbackContext callback)
+    {
+        if (callback.canceled)
+        {
+            _hero.Interact();
+        }
+    }
+
     public void OnAxesInput(InputAction.CallbackContext callback)
     {
         var direction = callback.ReadValue<Vector2>();
