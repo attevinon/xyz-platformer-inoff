@@ -9,6 +9,7 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private float _jumpDamageForce;
 
     [SerializeField] private LayerChecker _groundCheker;
+    [SerializeField] private SpawnComponent _spawnParticles;
 
     [SerializeField] private LayerMask _interactionLayer;
     [SerializeField] private float _interactionRadius;
@@ -22,7 +23,6 @@ public class HeroScript : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
-    private SpriteRenderer _sprite;
 
     static readonly int isRunningKey = Animator.StringToHash("is-running");
     static readonly int isGroundedKey = Animator.StringToHash("is-grounded");
@@ -33,7 +33,6 @@ public class HeroScript : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -110,17 +109,19 @@ public class HeroScript : MonoBehaviour
 
     private void UpdateSpriteDirection()
     {
-        if (_direction.x == 0)
-            return;
-
         if(_direction.x > 0)
         {
-            _sprite.flipX = false;
+            transform.localScale = Vector3.one;
         }
         else if (_direction.x < 0)
         {
-            _sprite.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
+    }
+
+    public void SpawnParticles()
+    {
+        _spawnParticles.Spawn();
     }
 
     private bool IsGrounded()
@@ -141,7 +142,7 @@ public class HeroScript : MonoBehaviour
 
     public void TakeHealing()
     {
-
+        //хочу сюда анимацию добавить
     }
 
     public void Interact()
