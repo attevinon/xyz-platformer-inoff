@@ -23,12 +23,12 @@ public class HealthComponent : MonoBehaviour
             if (_health <= 0)
             {
                 _onDie?.Invoke();
+                return;
             }
             else
             {
                 _onDamage?.Invoke();
             }
-            
         }
         
         Debug.Log("your health = " + _health);
