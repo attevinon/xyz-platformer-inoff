@@ -7,11 +7,16 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _jumpDamageForce;
+    [SerializeField] private float _slamdownVelocity;
 
-    [SerializeField] private LayerChecker _groundCheker;
-    [SerializeField] private SpawnComponent _spawnParticles;
+    [SerializeField] private SpawnComponent _runDustSpawner;
+    [SerializeField] private SpawnComponent _jumpDustSpawner;
+    [SerializeField] private SpawnComponent _slamdownDustSpawner;
+
     [SerializeField] private ParticleSystem _coinsParticles;
+    [SerializeField] private LayerChecker _groundCheker;
 
+    [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _interactionLayer;
     [SerializeField] private float _interactionRadius;
 
@@ -97,12 +102,14 @@ public class HeroScript : MonoBehaviour
         {
             //_rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             yVelocity += _jumpForce;
+            _jumpDustSpawner.Spawn();
         }
 
         else if (_allowDoubleJump)
         {
             yVelocity = _jumpForce;
             _allowDoubleJump = false;
+            _jumpDustSpawner.Spawn();
         }
 
         return yVelocity;
@@ -115,6 +122,23 @@ public class HeroScript : MonoBehaviour
         _animator.SetFloat(verticalVelocityKey, _rigidbody.velocity.y);
     }
 
+    public void SpawnRunDust()
+    {
+        _runDustSpawner.Spawn();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.IsInLayer(_groundLayer))
+        {
+            var contact = collision.GetContact(0);
+            if(contact.relativeVelocity.y >= _slamdownVelocity)
+            {
+                _slamdownDustSpawner.Spawn();
+            }
+        }
+    }
+
     private void UpdateSpriteDirection()
     {
         if(_direction.x > 0)
@@ -125,12 +149,6 @@ public class HeroScript : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-    }
-
-    //spawn dust???
-    public void SpawnParticles()
-    {
-        _spawnParticles.Spawn();
     }
 
     private bool IsGrounded()
