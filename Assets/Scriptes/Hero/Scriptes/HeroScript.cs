@@ -10,6 +10,7 @@ public class HeroScript : MonoBehaviour
 
     [SerializeField] private LayerChecker _groundCheker;
     [SerializeField] private SpawnComponent _spawnParticles;
+    [SerializeField] private ParticleSystem _coinsParticles;
 
     [SerializeField] private LayerMask _interactionLayer;
     [SerializeField] private float _interactionRadius;
@@ -119,6 +120,7 @@ public class HeroScript : MonoBehaviour
         }
     }
 
+    //spawn dust???
     public void SpawnParticles()
     {
         _spawnParticles.Spawn();
@@ -138,6 +140,13 @@ public class HeroScript : MonoBehaviour
     {
         _animator.SetTrigger(hitKey);
         _rigidbody.velocity = Vector2.up * _jumpDamageForce;
+
+
+    }
+
+    public void DropCoins()
+    {
+
     }
 
     public void TakeHealing()
