@@ -110,7 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8f0b1c36374874499fc57856ff64c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tag: Player
+  _tags:
+  - Player
   _action:
     m_PersistentCalls:
       m_Calls:
