@@ -4918,7 +4918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _jumpForce: 8
+  _jumpForce: 9
   _jumpDamageForce: 5
   _slamdownVelocity: 10
   _runDustSpawner: {fileID: 4897272375203817179}
