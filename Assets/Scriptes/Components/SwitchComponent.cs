@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SwitchComponent : MonoBehaviour
 {
     [SerializeField] private string _animationKey;
+    
+    //пока что не нужны, но может понядобятся
+    //[SerializeField] private UnityEvent _onActivate;
+    //[SerializeField] private UnityEvent _onDeactivate;
 
+    private bool _isActive;
     private Animator _animator;
-    private bool _state;
 
     void Awake()
     {
@@ -16,8 +18,27 @@ public class SwitchComponent : MonoBehaviour
 
     public void Switch()
     {
-        _state = !_state;
-        _animator.SetBool(_animationKey, _state);
+        _isActive = !_isActive;
+        _animator.SetBool(_animationKey, _isActive);
+    }
+
+    public void Activate()
+    {
+        if (_isActive)
+            return;
+
+        //_onActivate?.Invoke();
+        Switch();
+    }
+
+    public void Deactivate()
+    {
+        if (!_isActive)
+            return;
+
+        //_onDeactivate?.Invoke();
+        Switch();
+
     }
 
     [ContextMenu("Switch")]
