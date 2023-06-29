@@ -4932,7 +4932,7 @@ MonoBehaviour:
   _interactionLayer:
     serializedVersion: 2
     m_Bits: 512
-  _interactionRadius: 1
+  _interactionRadius: 0.5
 --- !u!114 &6087202584541998069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5059,9 +5059,9 @@ MonoBehaviour:
     m_ActionName: Hero/Attack[/Keyboard/c,/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2244786681484811427}
-        m_MethodName: Interact
-        m_Mode: 1
+      - m_Target: {fileID: 2244786681484811424}
+        m_MethodName: OnInteractionInput
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

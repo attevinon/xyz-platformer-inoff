@@ -8772,6 +8772,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 4484469235877827326, guid: 3e7db06282d3142409c7943eaa0be02a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e7db06282d3142409c7943eaa0be02a, type: 3}
 --- !u!1 &1572977565
@@ -9445,7 +9450,7 @@ PrefabInstance:
     - target: {fileID: 2604093118897028721, guid: c0ea4714dcce8bc428d256c591ed0646,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2604093118897028727, guid: c0ea4714dcce8bc428d256c591ed0646,
         type: 3}

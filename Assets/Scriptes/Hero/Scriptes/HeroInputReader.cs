@@ -27,7 +27,7 @@ public class HeroInputReader : MonoBehaviour
 
     public void OnInteractionInput(InputAction.CallbackContext callback)
     {
-        if (callback.canceled)
+        if (callback.performed)
         {
             _hero.Interact();
         }

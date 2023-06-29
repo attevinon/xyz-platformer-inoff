@@ -167,7 +167,7 @@
                     "name": "",
                     "id": "f1e1a9d2-7a76-4ea9-b21c-3111424d1f28",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=1)",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
