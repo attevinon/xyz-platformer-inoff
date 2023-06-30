@@ -1,72 +1,64 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class TranslocationComponent : MonoBehaviour
 {
-    [SerializeField] private Transform _destinationPoint;
+    [SerializeField] private Vector3[] _destinationPoints;
     [SerializeField] private float _smoothing;
+    [SerializeField] private bool _isReversed;
 
-    private Vector3 _startPoint;
+    private int _nextPointIndex;
     private Coroutine _coroutine;
-    private bool _isTranslocated = false;
+    private Vector3 _destinationPoint;
 
-    void Awake()
+    public void Translocate(int index)
     {
-        _startPoint = this.transform.position;
-    }
+        _destinationPoint = _destinationPoints[index];
 
-    public void Translocate(bool isToStartPoint)
-    {
-        Debug.Log("Вызван метод Translocate(bool) " + Time.time);
-
-        StopTranslocation();
-
-        _coroutine = StartCoroutine(
-            AnimateTranslocation((isToStartPoint) ? _startPoint : _destinationPoint.position));
-
-        Debug.Log("Корутина запущена " + Time.time);
+        StartTranslocation();
     }
 
     public void Translocate()
     {
-        Debug.Log("Вызван метод Translocate() " + Time.time);
+        CountNextPositionIndex();
 
-        Translocate(_isTranslocated);
+        _destinationPoint = _destinationPoints[_nextPointIndex];
+
+        StartTranslocation();
     }
 
-    private IEnumerator AnimateTranslocation(Vector3 destinationPosition)
+    private void StartTranslocation()
     {
-        Debug.Log("Вызвали AnimateTranslocation " + Time.time);
+        if (_coroutine != null)
+            return;
 
-        while(this.transform.position != destinationPosition)
+        _coroutine = StartCoroutine(AnimateTranslocation());
+    }
+
+    private IEnumerator AnimateTranslocation()
+    {
+        while (this.transform.position != _destinationPoint)
         {
-            this.transform.position = Vector3.Lerp(this.transform.position, destinationPosition, _smoothing);
-
+            this.transform.position = Vector3.Lerp(this.transform.position, _destinationPoint, _smoothing);
             yield return null;
         }
 
-        _isTranslocated = !_isTranslocated;
-        Debug.Log("Последняя строка AnimateTranslocation " + Time.time);
+        _coroutine = null;
     }
 
-    [ContextMenu("StopTranslocation")]
-    public void StopTranslocation()
+    private void CountNextPositionIndex()
     {
-        if (_coroutine != null)
+        if (_nextPointIndex == _destinationPoints.Length - 1 && _isReversed)
         {
-            StopCoroutine(_coroutine);
-            _coroutine = null;
-            _isTranslocated = !_isTranslocated;
-            Debug.Log("Сделали корутин null " + Time.time);
+            Array.Reverse(_destinationPoints);
         }
-        else
-        {
-            Debug.Log("Kорутинa i tak byla null " + Time.time);
-        }
+
+        _nextPointIndex = (int)Mathf.Repeat(_nextPointIndex + 1, _destinationPoints.Length);
     }
 
     [ContextMenu("Translocate")]
-    public void TranslocateIn()
+    private void TranslocateIn()
     {
         Translocate();
     }
