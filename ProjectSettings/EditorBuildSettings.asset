@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LevelScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: 78c56fabe88ffb145ae921f624b42b3d
+  - enabled: 1
+    path: Assets/Scenes/KursovayaScene.unity
+    guid: ec65c6ea977f1fe4c974219290d4584a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2f40c162051fb6e4e80a59eb09c58b66,
       type: 2}
