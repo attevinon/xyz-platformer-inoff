@@ -30,7 +30,6 @@ public class HealthComponent : MonoBehaviour
                 _onDamage?.Invoke();
             }
         }
-        
-        Debug.Log("your health = " + _health);
+       
     }
 }
