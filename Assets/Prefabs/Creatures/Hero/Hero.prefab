@@ -4926,6 +4926,7 @@ MonoBehaviour:
   _runDustSpawner: {fileID: 4897272375203817179}
   _jumpDustSpawner: {fileID: 7305328170596587003}
   _slamdownDustSpawner: {fileID: 3139890153945146246}
+  _attackWaveSpawner: {fileID: 5629937791811627691}
   _coinsParticles: {fileID: 2129740526}
   _groundCheker: {fileID: 2244786681510140030}
   _attackRange: {fileID: 186205765152694579}
@@ -5314,6 +5315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6782546431508917426}
   - component: {fileID: 186205765152694579}
+  - component: {fileID: 5629937791811627691}
   m_Layer: 10
   m_Name: AttackRange
   m_TagString: Untagged
@@ -5348,6 +5350,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 0.18
+--- !u!114 &5629937791811627691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7599880578772376486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc99ff21d7ac6d479e2c5da92ebc3ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPoint: {fileID: 6782546431508917426}
+  _prefabToSpawn: {fileID: 9120274201420432735, guid: b231727a830da934ab6f292aa88c2bf6,
+    type: 3}
 --- !u!1 &8508192843332325823
 GameObject:
   m_ObjectHideFlags: 0

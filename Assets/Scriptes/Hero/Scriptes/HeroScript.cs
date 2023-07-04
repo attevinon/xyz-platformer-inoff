@@ -16,6 +16,7 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private SpawnComponent _runDustSpawner;
     [SerializeField] private SpawnComponent _jumpDustSpawner;
     [SerializeField] private SpawnComponent _slamdownDustSpawner;
+    [SerializeField] private SpawnComponent _attackWaveSpawner;
 
     [SerializeField] private ParticleSystem _coinsParticles;
     [SerializeField] private LayerChecker _groundCheker;
@@ -233,6 +234,7 @@ public class HeroScript : MonoBehaviour
 
     private void Attack()
     {
+        _attackWaveSpawner.Spawn();
         var objectsInRange = _attackRange.GetGameObjectsInRange();
 
         foreach (var objectInRange in objectsInRange)
