@@ -46,7 +46,7 @@ public class AnimatorComponent : MonoBehaviour
     private void StartAnimation()
     {
         _nextFrameTime = Time.time + _secondsPerFrame;
-        enabled = _isPlaying;
+        enabled = true;
         _currentFrameIndex = 0;
     }
 
@@ -62,7 +62,7 @@ public class AnimatorComponent : MonoBehaviour
             }
             else
             {
-                enabled = _isPlaying;
+                enabled = state.AllowNext;
                 state.OnComplete?.Invoke();
 
                 if (state.AllowNext)
