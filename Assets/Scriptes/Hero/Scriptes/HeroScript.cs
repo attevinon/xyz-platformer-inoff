@@ -1,6 +1,7 @@
 ﻿using PixelCrew.Utils;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class HeroScript : MonoBehaviour
@@ -24,17 +25,21 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private LayerMask _interactionLayer;
     [SerializeField] private float _interactionRadius;
 
+    [SerializeField] private AnimatorController _unarmed;
+    [SerializeField] private AnimatorController _armed;
+
     private int _score;
 
     private Vector2 _direction;
     private bool _isGrounded;
     private bool _allowDoubleJump;
     private bool _isJumping;
+    private bool _isArmed;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
 
-    private Collider2D[] _interactionResult = new Collider2D[2];
+    private Collider2D[] _interactionResult = new Collider2D[1];
 
     static readonly int isRunningKey = Animator.StringToHash("is-running");
     static readonly int isGroundedKey = Animator.StringToHash("is-grounded");
@@ -194,6 +199,12 @@ public class HeroScript : MonoBehaviour
     {
         _score += value;
         Debug.Log("Score: " + _score);
+    }
+
+    public void ArmHero()
+    {
+        _isArmed = true;
+        _animator.runtimeAnimatorController = _armed;
     }
 
     public void Interact()

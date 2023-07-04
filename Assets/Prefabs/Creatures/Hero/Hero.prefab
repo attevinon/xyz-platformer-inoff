@@ -4936,6 +4936,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _interactionRadius: 0.5
+  _unarmed: {fileID: 9100000, guid: b6f7b8a06fd481c4ea5b2735840c5fb1, type: 2}
+  _armed: {fileID: 9100000, guid: cce1c31d6006d0d49b22390ad5d7040b, type: 2}
 --- !u!114 &6087202584541998069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5090,7 +5092,7 @@ Animator:
   m_GameObject: {fileID: 2244786681484811428}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cce1c31d6006d0d49b22390ad5d7040b, type: 2}
+  m_Controller: {fileID: 9100000, guid: b6f7b8a06fd481c4ea5b2735840c5fb1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
