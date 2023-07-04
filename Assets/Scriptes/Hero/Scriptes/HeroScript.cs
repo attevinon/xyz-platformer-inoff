@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using PixelCrew.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroScript : MonoBehaviour
 {
+    [SerializeField] private int _damage;
+
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _jumpDamageForce;
@@ -15,16 +18,15 @@ public class HeroScript : MonoBehaviour
 
     [SerializeField] private ParticleSystem _coinsParticles;
     [SerializeField] private LayerChecker _groundCheker;
+    [SerializeField] private CheckCircleOverlap _attackRange;
 
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _interactionLayer;
     [SerializeField] private float _interactionRadius;
 
-    private Collider2D[] _interactionResult = new Collider2D[1];
-    private Vector2 _direction;
-
     private int _score;
 
+    private Vector2 _direction;
     private bool _isGrounded;
     private bool _allowDoubleJump;
     private bool _isJumping;
@@ -32,10 +34,13 @@ public class HeroScript : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;
 
+    private Collider2D[] _interactionResult = new Collider2D[2];
+
     static readonly int isRunningKey = Animator.StringToHash("is-running");
     static readonly int isGroundedKey = Animator.StringToHash("is-grounded");
     static readonly int verticalVelocityKey = Animator.StringToHash("vertical-velocity");
     static readonly int hitKey = Animator.StringToHash("hit");
+    static readonly int attackKey = Animator.StringToHash("attack");
 
     private void Awake()
     {
@@ -156,11 +161,6 @@ public class HeroScript : MonoBehaviour
         return _groundCheker.isTouchingLayer;
     }
 
-    public void Attack()
-    {
-        Debug.Log("ATTACK!!!!!!!!!!");
-    }
-
     public void TakeDamage()
     {
         _animator.SetTrigger(hitKey);
@@ -211,6 +211,26 @@ public class HeroScript : MonoBehaviour
             if(interactable != null)
             {
                 interactable.Interact();
+            }
+        }
+    }
+
+    public void StartAttack()
+    {
+        _animator.SetTrigger(attackKey);
+    }
+
+    private void Attack()
+    {
+        var objectsInRange = _attackRange.GetGameObjectsInRange();
+
+        foreach (var objectInRange in objectsInRange)
+        {
+            var healthComponent = objectInRange.GetComponent<HealthComponent>();
+
+            if (healthComponent != null && objectInRange.CompareTag("Enemy"))
+            {
+                healthComponent.ApplyHealthImpact(-_damage);
             }
         }
     }

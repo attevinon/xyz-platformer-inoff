@@ -1,3 +1,4 @@
+using PixelCrew.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,7 @@ public class LayerChecker : MonoBehaviour
     {
         if(_collider != null)
         {
-            Gizmos.color = (isTouchingLayer) ? Color.yellow : Color.cyan;
+            Gizmos.color = (isTouchingLayer) ? HandlesUtils.TransperentYellow : HandlesUtils.TransperentBlue;
             Gizmos.DrawCube(transform.position, _collider.bounds.size);
         }
     }

@@ -11,17 +11,12 @@ public class HeroInputReader : MonoBehaviour
     {
         _hero = GetComponent<HeroScript>();
     }
-    void Update()
-    {
-        //нет необходимости дёргать с вопросом "а чё а нажали уже кнопку??"
-        //всё работает по ивентам
-        //так что тут пусто......
-    }
+
     public void OnAttackInput(InputAction.CallbackContext callback)
     {
         if (callback.canceled)
         {
-            _hero.Attack();
+            _hero.StartAttack();
         }
     }
 
