@@ -18,12 +18,17 @@ public class TeleportComponent : MonoBehaviour
         var input = objectToTeleport.GetComponent<HeroInputReader>();
 
         SetInputLock(input, true);
+        var collider = objectToTeleport.GetComponent<Collider2D>();
+        if (collider == null)
+            StopAllCoroutines();
 
         yield return AnimateAlpha(sprite, 0f);
         objectToTeleport.SetActive(false);
+        collider.enabled = false;
 
         yield return AnimateTranslocation(objectToTeleport);
 
+        collider.enabled = true;
         objectToTeleport.SetActive(true);
         yield return AnimateAlpha(sprite, 1f);
 

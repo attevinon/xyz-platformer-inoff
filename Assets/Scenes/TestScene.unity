@@ -2348,6 +2348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 642157505837537373, guid: 9b2da07b21056ff49864270b2e4c8942,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2da07b21056ff49864270b2e4c8942, type: 3}
 --- !u!1 &347559846
@@ -2666,6 +2671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spikes (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 642157505837537373, guid: 9b2da07b21056ff49864270b2e4c8942,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2332551902684172013, guid: 9b2da07b21056ff49864270b2e4c8942,
         type: 3}
@@ -3206,7 +3216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832091566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.272747, y: 4.6100006, z: -10}
+  m_LocalPosition: {x: 14.272808, y: 4.6100006, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3337,6 +3347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spikes (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 642157505837537373, guid: 9b2da07b21056ff49864270b2e4c8942,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2da07b21056ff49864270b2e4c8942, type: 3}
@@ -3832,6 +3847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spikes (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 642157505837537373, guid: 9b2da07b21056ff49864270b2e4c8942,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2332551902684172013, guid: 9b2da07b21056ff49864270b2e4c8942,
         type: 3}
@@ -4480,6 +4500,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2129740526, guid: e8ca359dc2fb47a40b4d80cf60107b0f, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2244786681484811428, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
         type: 3}
       propertyPath: m_Name
@@ -4911,6 +4935,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spikes (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 642157505837537373, guid: 9b2da07b21056ff49864270b2e4c8942,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2da07b21056ff49864270b2e4c8942, type: 3}
@@ -5421,6 +5450,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1571817262498059802, guid: 2a37dd014dc1d184ab2930fb166486ec,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3788000925375535196, guid: 2a37dd014dc1d184ab2930fb166486ec,
         type: 3}
       propertyPath: m_Name
@@ -5485,6 +5519,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8507398229304372519, guid: 2a37dd014dc1d184ab2930fb166486ec,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.595
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a37dd014dc1d184ab2930fb166486ec, type: 3}
