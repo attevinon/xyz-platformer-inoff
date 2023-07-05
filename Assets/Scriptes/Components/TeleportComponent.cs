@@ -23,13 +23,13 @@ public class TeleportComponent : MonoBehaviour
             StopAllCoroutines();
 
         yield return AnimateAlpha(sprite, 0f);
-        objectToTeleport.SetActive(false);
         collider.enabled = false;
+        objectToTeleport.SetActive(false);
 
         yield return AnimateTranslocation(objectToTeleport);
 
-        collider.enabled = true;
         objectToTeleport.SetActive(true);
+        collider.enabled = true;
         yield return AnimateAlpha(sprite, 1f);
 
         SetInputLock(input, false);

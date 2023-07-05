@@ -1,7 +1,6 @@
 ﻿using PixelCrew.Utils;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class HeroScript : MonoBehaviour
@@ -26,8 +25,8 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private LayerMask _interactionLayer;
     [SerializeField] private float _interactionRadius;
 
-    [SerializeField] private AnimatorController _unarmed;
-    [SerializeField] private AnimatorController _armed;
+    [SerializeField] private RuntimeAnimatorController _unarmed;
+    [SerializeField] private RuntimeAnimatorController _armed;
 
     private int _score;
 

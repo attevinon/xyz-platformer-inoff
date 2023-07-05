@@ -24,11 +24,13 @@ namespace PixelCrew.Utils
 
             return overlaps.ToArray();
         }
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             Handles.color = HandlesUtils.TransperentRed;
             Handles.DrawSolidDisc(transform.position, Vector3.forward, _radius);
         }
+#endif
     }
 }
 
