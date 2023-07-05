@@ -229,7 +229,8 @@ public class HeroScript : MonoBehaviour
 
     public void StartAttack()
     {
-        _animator.SetTrigger(attackKey);
+        if(_isArmed)
+            _animator.SetTrigger(attackKey);
     }
 
     private void Attack()

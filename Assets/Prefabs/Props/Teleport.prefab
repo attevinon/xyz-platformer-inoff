@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 0}
+  _timeToTranslocate: 1
+  _timeToAlpha: 1
 --- !u!114 &8267371392297902975
 MonoBehaviour:
   m_ObjectHideFlags: 0
