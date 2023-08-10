@@ -1,4 +1,5 @@
-﻿using PixelCrew.Utils;
+﻿using Model;
+using PixelCrew.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,13 +29,12 @@ public class HeroScript : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController _unarmed;
     [SerializeField] private RuntimeAnimatorController _armed;
 
-    private int _score;
+    private GameSession _session;
 
     private Vector2 _direction;
     private bool _isGrounded;
     private bool _allowDoubleJump;
     private bool _isJumping;
-    private bool _isArmed;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -55,7 +55,12 @@ public class HeroScript : MonoBehaviour
 
     private void Start()
     {
-        _score = 0;
+        _session = FindObjectOfType<GameSession>();
+
+        var health = GetComponent<HealthComponent>();
+        health.SetHealth(_session.Data.Health);
+
+        UpdateHeroWeapon();
     }
 
     void Update()
@@ -166,12 +171,17 @@ public class HeroScript : MonoBehaviour
         return _groundCheker.isTouchingLayer;
     }
 
+    public void OnHealthChanged(int health)
+    {
+        _session.Data.Health = health;
+    }
+
     public void TakeDamage()
     {
         _animator.SetTrigger(hitKey);
         _rigidbody.velocity = Vector2.up * _jumpDamageForce;
 
-        if (_score > 0)
+        if (_session.Data.Coins > 0)
         {
             DropCoins();
         }
@@ -179,8 +189,8 @@ public class HeroScript : MonoBehaviour
 
     private void DropCoins()
     {
-        int coinsToDrop = Mathf.Min(_score, 5);
-        _score -= coinsToDrop;
+        int coinsToDrop = Mathf.Min(_session.Data.Coins, 5);
+        _session.Data.Coins -= coinsToDrop;
 
         var coinsBurst = _coinsParticles.emission.GetBurst(0);
         coinsBurst.count = coinsToDrop;
@@ -197,14 +207,19 @@ public class HeroScript : MonoBehaviour
 
     public void RefillScore(int value)
     {
-        _score += value;
-        Debug.Log("Score: " + _score);
+        _session.Data.Coins += value;
+        Debug.Log("Total Coins: " + _session.Data.Coins);
     }
 
     public void ArmHero()
     {
-        _isArmed = true;
-        _animator.runtimeAnimatorController = _armed;
+        _session.Data.IsArmed = true;
+        UpdateHeroWeapon();
+    }
+
+    public void UpdateHeroWeapon()
+    {
+        _animator.runtimeAnimatorController = (_session.Data.IsArmed) ?  _armed : _unarmed;
     }
 
     public void Interact()
@@ -228,7 +243,7 @@ public class HeroScript : MonoBehaviour
 
     public void StartAttack()
     {
-        if(_isArmed)
+        if(_session.Data.IsArmed)
             _animator.SetTrigger(attackKey);
     }
 
