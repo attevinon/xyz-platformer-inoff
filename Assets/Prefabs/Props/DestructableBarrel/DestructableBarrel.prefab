@@ -225,6 +225,9 @@ MonoBehaviour:
           m_StringArgument: destroyed
           m_BoolArgument: 0
         m_CallState: 2
+  _onChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8304383739167928134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4120408126603961981}
   - component: {fileID: 4813062089560127031}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: LootSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +364,7 @@ GameObject:
   - component: {fileID: 2322490911673512345}
   - component: {fileID: 1043626427559911311}
   - component: {fileID: 5031942465195463114}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Loot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
