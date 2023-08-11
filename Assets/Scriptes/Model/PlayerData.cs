@@ -11,6 +11,12 @@ namespace Model
         public int Coins;
         public int Health;
         public bool IsArmed;
+
+        public PlayerData Clone()
+        {
+            var jsonClone = JsonUtility.ToJson(this);
+            return JsonUtility.FromJson<PlayerData>(jsonClone);
+        }
     }
 }
 

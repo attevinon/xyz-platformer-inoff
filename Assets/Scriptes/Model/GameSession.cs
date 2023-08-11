@@ -7,6 +7,7 @@ namespace Model
 {
     public class GameSession : MonoBehaviour
     {
+        [SerializeField] private PlayerData _save;
         [SerializeField] private PlayerData _data;
         public PlayerData Data => _data;
 
@@ -32,6 +33,16 @@ namespace Model
             }
 
             return false;
+        }
+
+        public void Save()
+        {
+            _save = _data.Clone();
+        }
+
+        public void LoadLastSave()
+        {
+            _data = _save.Clone();
         }
     }
 }

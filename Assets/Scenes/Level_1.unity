@@ -535,6 +535,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef52ed7aaf58f9d40838d724c9ad654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _save:
+    Coins: 0
+    Health: 0
+    IsArmed: 0
   _data:
     Coins: 0
     Health: 5
@@ -1061,6 +1065,7 @@ GameObject:
   - component: {fileID: 889987683}
   - component: {fileID: 889987682}
   - component: {fileID: 889987681}
+  - component: {fileID: 889987684}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1246,6 +1251,18 @@ MonoBehaviour:
   m_CropFrameX: 1
   m_CropFrameY: 1
   m_StretchFill: 0
+--- !u!114 &889987684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889987677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7b879919c032d40a250e9143ae6bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1016402793
 GameObject:
   m_ObjectHideFlags: 0
@@ -5992,6 +6009,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _health
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087202584541998069, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 889987684}
+    - target: {fileID: 6087202584541998069, guid: e8ca359dc2fb47a40b4d80cf60107b0f,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8ca359dc2fb47a40b4d80cf60107b0f, type: 3}
