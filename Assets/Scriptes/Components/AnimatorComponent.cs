@@ -15,7 +15,7 @@ public class AnimatorComponent : MonoBehaviour
     private int _currentFrameIndex;
     private float _secondsPerFrame;
     private float _nextFrameTime;
-    private bool _isPlaying = true; //ne vse zavisit ot OnBecomeVisible
+    private bool _isPlaying = true; 
 
     private void Awake()
     {
