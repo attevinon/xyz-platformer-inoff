@@ -131,6 +131,7 @@ MonoBehaviour:
   _tags:
   - Player
   - Heavy
+  - Enemy
   _action:
     m_PersistentCalls:
       m_Calls:
@@ -171,6 +172,7 @@ MonoBehaviour:
   _tags:
   - Player
   - Heavy
+  - Enemy
   _action:
     m_PersistentCalls:
       m_Calls:
