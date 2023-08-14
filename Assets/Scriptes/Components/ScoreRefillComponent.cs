@@ -1,18 +1,21 @@
 using UnityEngine;
+using PixelCrew.Creatures;
 
-public class ScoreRefillComponent : MonoBehaviour
+namespace PixelCrew
 {
-    [SerializeField] private int _coinValue;
-
-    private HeroScript _hero;
-
-    void Start()
+    public class ScoreRefillComponent : MonoBehaviour
     {
-        _hero = FindObjectOfType<HeroScript>();
-    }
-    public void IncreaseScore()
-    {
-        _hero.RefillScore(_coinValue);
-    }
+        [SerializeField] private int _coinValue;
 
+        private HeroScript _hero;
+
+        void Start()
+        {
+            _hero = FindObjectOfType<HeroScript>();
+        }
+        public void IncreaseScore()
+        {
+            _hero.RefillScore(_coinValue);
+        }
+    }
 }

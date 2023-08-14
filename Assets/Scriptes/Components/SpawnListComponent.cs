@@ -1,25 +1,33 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class SpawnListComponent : MonoBehaviour
+namespace PixelCrew
 {
-    [SerializeField] private SpawnerData[] _spawners;
-
-    public void SpawnAll()
+    public class SpawnListComponent : MonoBehaviour
     {
-        foreach (var spawner in _spawners)
-        {
-            spawner?.Component.Spawn();
-        }
-    }
-    
-}
+        [SerializeField] private SpawnerData[] _spawners;
 
-[Serializable]
-public class SpawnerData
-{
-    public string Id;
-    public SpawnComponent Component;
+        public void Spawn(string id)
+        {
+            var spawnerData = _spawners.FirstOrDefault(spawner => spawner.Id == id);
+            spawnerData?.Component.Spawn();
+        }
+
+        public void SpawnAll()
+        {
+            foreach (var spawnerData in _spawners)
+            {
+                spawnerData?.Component.Spawn();
+            }
+        }
+
+    }
+
+    [Serializable]
+    public class SpawnerData
+    {
+        public string Id;
+        public SpawnComponent Component;
+    }
 }
