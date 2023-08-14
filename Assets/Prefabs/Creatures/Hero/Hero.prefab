@@ -5216,7 +5216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 4352
+    m_Bits: 5376
   isTouchingLayer: 0
 --- !u!61 &2244786681510140025
 BoxCollider2D:

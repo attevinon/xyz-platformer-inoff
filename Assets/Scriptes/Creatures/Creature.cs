@@ -5,16 +5,21 @@ using UnityEngine;
 
 namespace PixelCrew.Creatures
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Animator))]
     public class Creature : MonoBehaviour
     {
+        [Header("Params:")]
         [SerializeField] private float _speed;
         [SerializeField] protected float _jumpForce;
         [SerializeField] private float _jumpDamageForce;
-        [SerializeField] private int _damage;
+        [SerializeField] private bool _isLooksToTheRight;
 
+        [Header("Chekers:")]
         [SerializeField] private LayerChecker _groundCheker;
-        [SerializeField] protected LayerMask _groundLayer;
         [SerializeField] private CheckCircleOverlap _attackRange;
+
+        [Header("Particles:")]
         [SerializeField] protected SpawnListComponent _particlesSpawners;
 
         private Vector2 _direction;
@@ -65,13 +70,14 @@ namespace PixelCrew.Creatures
 
         private void UpdateSpriteDirection()
         {
+            float multiplier = _isLooksToTheRight ? 1 : -1;
             if (_direction.x > 0)
             {
-                transform.localScale = Vector3.one;
+                transform.localScale = new Vector3(multiplier, 1, 1);
             }
             else if (_direction.x < 0)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-1 * multiplier, 1, 1);
             }
         }
 
@@ -114,7 +120,7 @@ namespace PixelCrew.Creatures
 
         private bool IsGrounded()
         {
-            return _groundCheker.isTouchingLayer;
+            return _groundCheker.IsTouchingLayer;
         }
 
         public virtual void TakeDamage()
