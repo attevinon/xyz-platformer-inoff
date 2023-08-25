@@ -6,23 +6,22 @@ using UnityEngine;
 
 namespace PixelCrew.Creatures
 {
+    [RequireComponent(typeof(HealthComponent))]
     public class HeroScript : Creature
     {
-
+        [Header("Hero:")]
         [SerializeField] private float _slamdownVelocity;
-
+        [SerializeField] protected LayerMask _groundLayer;
         [SerializeField] private CheckCircleOverlap _interactionCheck;
-
         [SerializeField] private ParticleSystem _coinsParticles;
 
+        [Header("Animators:")]
         [SerializeField] private RuntimeAnimatorController _unarmed;
         [SerializeField] private RuntimeAnimatorController _armed;
 
-        private GameSession _session;
-
         private bool _allowDoubleJump;
 
-        private Collider2D[] _interactionResult = new Collider2D[1];
+        private GameSession _session;
 
         protected override void Awake()
         {
