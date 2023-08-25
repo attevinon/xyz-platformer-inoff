@@ -5,7 +5,9 @@ using UnityEngine;
 namespace PixelCrew.Creatures
 {
     [RequireComponent(typeof(Creature))]
+    [RequireComponent(typeof(Patrol))]
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(CapsuleCollider2D))]
     [RequireComponent(typeof(SpawnListComponent))]
     public class MobAI : MonoBehaviour
     {
@@ -21,8 +23,10 @@ namespace PixelCrew.Creatures
 
         private GameObject _target;
         private Creature _creature;
+        private Patrol _patrol;
         private SpawnListComponent _particles;
         private Animator _animator;
+        private CapsuleCollider2D _collider;
 
         private readonly int isDeadKey = Animator.StringToHash("is-dead"); 
 
@@ -31,11 +35,13 @@ namespace PixelCrew.Creatures
             _animator = GetComponent<Animator>();
             _creature = GetComponent<Creature>();
             _particles = GetComponent<SpawnListComponent>();
+            _patrol = GetComponent<Patrol>();
+            _collider = GetComponent<CapsuleCollider2D>();
         }
 
         void Start()
         {
-
+            StartCoroutine(_patrol.DoPatrol());
         }
 
         public void OnTargetInVision(GameObject go)
@@ -47,22 +53,11 @@ namespace PixelCrew.Creatures
             StartState(ReactOnTarget());
         }
 
-        private void StartState(IEnumerator coroutine)
-        {
-            _creature.SetDirection(Vector2.zero);
-
-            if (_currentCoroutine != null)
-            {
-                StopCoroutine(_currentCoroutine);
-            }
-
-            _currentCoroutine = StartCoroutine(coroutine);
-        }
-
         private IEnumerator ReactOnTarget()
         {
-            _particles.Spawn("Detect");
+            _patrol.enabled = false;
 
+            _particles.Spawn("Detect");
             yield return new WaitForSeconds(_detectCooldown);
 
             StartState(GoToTarget());
@@ -86,6 +81,15 @@ namespace PixelCrew.Creatures
 
             _particles.Spawn("Miss");
             yield return new WaitForSeconds(_missCooldown);
+
+            _patrol.enabled = true;
+            StartState(_patrol.DoPatrol());
+        }
+        private void SetDirectionToTarget()
+        {
+            var direction = _target.transform.position - transform.position;
+            direction.y = 0;
+            _creature.SetDirection(direction.normalized);
         }
 
         private IEnumerator Attack()
@@ -99,22 +103,31 @@ namespace PixelCrew.Creatures
             StartState(GoToTarget());
         }
 
-        private void SetDirectionToTarget()
+        private void StartState(IEnumerator coroutine)
         {
-            var direction = _target.transform.position - transform.position;
-            direction.y = 0;
-            _creature.SetDirection(direction.normalized);
+            _creature.SetDirection(Vector2.zero);
+
+            if (_currentCoroutine != null)
+            {
+                StopCoroutine(_currentCoroutine);
+            }
+
+            _currentCoroutine = StartCoroutine(coroutine);
         }
 
         public void OnDie()
         {
             _isDead = true;
+            _collider.direction = CapsuleDirection2D.Horizontal;
             _animator.SetBool(isDeadKey, true);
 
             if (_currentCoroutine != null)
             {
                 StopCoroutine(_currentCoroutine);
             }
+
+            /*var layer = LayerMask.NameToLayer("Trash");
+            gameObject.layer = layer;*/
         }
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2244786681484811426}
   - component: {fileID: 2835713704989324978}
   - component: {fileID: 4126444250714096873}
+  - component: {fileID: 8580514607236161028}
   - component: {fileID: 6087202584541998069}
   - component: {fileID: 7300611380473513128}
   - component: {fileID: 4502786918791685396}
@@ -128,8 +129,25 @@ MonoBehaviour:
   _vision: {fileID: 8804594256364292472}
   _attackRange: {fileID: 4633163081538694528}
   _attackCooldown: 1
-  _missCooldown: 1
-  _detectCooldown: 1
+  _missCooldown: 0.5
+  _detectCooldown: 0.5
+--- !u!114 &8580514607236161028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244786681484811428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e0e1ffaf3eae34facc9a7ae82b24c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _points:
+  - {fileID: 0}
+  - {fileID: 0}
+  _stayOnPointForSec: 1
+  _treshhold: 1
 --- !u!114 &6087202584541998069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6ea07978578ac4e84c999da12c83e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 4
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -166,6 +184,17 @@ MonoBehaviour:
       - m_Target: {fileID: 4126444250714096873}
         m_MethodName: OnDie
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8580514607236161028}
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -399,7 +428,7 @@ Transform:
   m_GameObject: {fileID: 6516636386982776059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2244786681484811453}
   m_RootOrder: 5
@@ -508,7 +537,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.5, y: 0.66572845}
+  m_Offset: {x: -1.0938232, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -519,7 +548,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.331457, y: 1.3314569}
+  m_Size: {x: 4.412353, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &7599880578772376486
 GameObject:
