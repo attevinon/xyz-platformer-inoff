@@ -31,7 +31,7 @@ public class LayerChecker : MonoBehaviour
     {
         if(_collider != null)
         {
-            Gizmos.color = (IsTouchingLayer) ? HandlesUtils.TransperentYellow : HandlesUtils.TransperentBlue;
+            Gizmos.color = (IsTouchingLayer) ? Color.yellow : HandlesUtils.TransperentBlue;
             Gizmos.DrawCube((Vector2)transform.position + _collider.offset, _collider.bounds.size);
         }
     }

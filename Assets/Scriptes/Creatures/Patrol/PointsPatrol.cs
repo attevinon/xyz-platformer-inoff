@@ -8,6 +8,8 @@ namespace PixelCrew.Creatures
     public class PointsPatrol : Patrol
     {
         [SerializeField] private Transform[] _points;
+        [SerializeField] private LayerChecker _nextStepChecker;
+        [SerializeField] private LayerChecker _obstacleChecker;
         [SerializeField] private float _stayOnPointForSec = 1f;
         [SerializeField] private float _treshhold = 0.5f;
         private int _destinationPointIndex = 0;
@@ -21,8 +23,10 @@ namespace PixelCrew.Creatures
         {
             while (enabled)
             {
-                if (IsOnPoint())
+                if (IsOnPoint() || _obstacleChecker.IsTouchingLayer || !_nextStepChecker.IsTouchingLayer)
                 {
+                    //todo: check are points available just like with hero
+                    //turn on like platform mode if can't reach points
                     _destinationPointIndex = (int)Mathf.Repeat(_destinationPointIndex + 1, _points.Length);
 
                     _creature.SetDirection(Vector2.zero);

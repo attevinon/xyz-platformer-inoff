@@ -6,7 +6,8 @@ namespace PixelCrew.Creatures
     [RequireComponent(typeof(Creature))]
     public class PlatformPatrol : Patrol
     {
-        [SerializeField] private LayerChecker _nextStepGroundChecker;
+        [SerializeField] private LayerChecker _nextStepChecker;
+        [SerializeField] private LayerChecker _obstacleChecker;
         [SerializeField] private float _stayOnBorderForSec = 1f;
 
         private Creature _creature;
@@ -20,7 +21,7 @@ namespace PixelCrew.Creatures
         {
             while (enabled)
             {
-                if (!_nextStepGroundChecker.IsTouchingLayer)
+                if (!_nextStepChecker.IsTouchingLayer || _obstacleChecker.IsTouchingLayer)
                 {
                     _creature.SetDirection(Vector2.zero);
                     _directionX = -_directionX;
