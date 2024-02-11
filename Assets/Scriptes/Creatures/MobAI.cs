@@ -41,7 +41,8 @@ namespace PixelCrew.Creatures
 
         void Start()
         {
-            StartCoroutine(_patrol.DoPatrol());
+            _patrol.enabled = true;
+            StartState(_patrol.DoPatrol());
         }
 
         public void OnTargetInVision(GameObject go)
