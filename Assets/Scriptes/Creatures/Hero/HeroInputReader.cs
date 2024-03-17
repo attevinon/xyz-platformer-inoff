@@ -15,9 +15,17 @@ namespace PixelCrew
 
         public void OnAttackInput(InputAction.CallbackContext callback)
         {
-            if (callback.canceled)
+            if (callback.performed)
             {
                 _hero.StartAttackAnimation();
+            }
+        }
+
+        public void OnTrowInput(InputAction.CallbackContext callback)
+        {
+            if (callback.performed)
+            {
+                _hero.StartThrowAnimation();
             }
         }
 

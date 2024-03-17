@@ -93,9 +93,10 @@ namespace PixelCrew.Creatures
 
             if (isJumpPressing)
             {
+                //говніна
                 _isJumping = true;
-                bool isFalling = _rigidbody.velocity.y <= 0.001f;
-                yVelocity = isFalling ? CalculateJumpVelocity(yVelocity) : yVelocity;
+                bool isNotGoingUp = _rigidbody.velocity.y <= 0.001f;
+                yVelocity = isNotGoingUp ? CalculateJumpVelocity(yVelocity) : yVelocity;
 
             }
             else if (_rigidbody.velocity.y > 0 && _isJumping) //падение

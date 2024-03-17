@@ -23,6 +23,8 @@ namespace PixelCrew.Creatures
 
         private GameSession _session;
 
+        static readonly int throwKey = Animator.StringToHash("throw");
+
         protected override void Awake()
         {
             base.Awake();
@@ -141,6 +143,19 @@ namespace PixelCrew.Creatures
             if (!_session.Data.IsArmed) return;
 
             base.StartAttackAnimation();
+        }
+        public void StartThrowAnimation()
+        {
+            //проверка запаса мечей??
+            //проверка прыжка??
+            if (!_session.Data.IsArmed) return;
+
+            Animator.SetTrigger(throwKey);
+        }
+
+        public void DoThrow()
+        {
+            _particlesSpawners.Spawn("Throw");
         }
 
         public void ArmHero()
