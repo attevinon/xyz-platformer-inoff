@@ -38,6 +38,11 @@ namespace PixelCrew.Creatures
             health.SetHealth(_session.Data.Health);
 
             UpdateHeroWeapon();
+
+            if(_session.Data.IsArmed && _session.Data.Projectiles <= 0)
+            {
+                _session.Data.Projectiles = 1;
+            }
         }
 
         protected override void Update()
@@ -150,6 +155,11 @@ namespace PixelCrew.Creatures
             //проверка прыжка??
             if (!_session.Data.IsArmed) return;
 
+            Debug.Log("Projectiles = " + _session.Data.Projectiles);
+            if (_session.Data.Projectiles <= 1) return;
+
+            _session.Data.Projectiles -= 1;
+
             Animator.SetTrigger(throwKey);
         }
 
@@ -160,8 +170,14 @@ namespace PixelCrew.Creatures
 
         public void ArmHero()
         {
-            _session.Data.IsArmed = true;
-            UpdateHeroWeapon();
+            if (!_session.Data.IsArmed)
+            {
+                _session.Data.IsArmed = true;
+                UpdateHeroWeapon();
+            }
+
+            _session.Data.Projectiles += 1;
+            Debug.Log("Projectiles = " + _session.Data.Projectiles);
         }
 
         public void UpdateHeroWeapon()

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Model
@@ -11,6 +9,7 @@ namespace Model
         public int Coins;
         public int Health;
         public bool IsArmed;
+        public int Projectiles;
 
         public PlayerData Clone()
         {

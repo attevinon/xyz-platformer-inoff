@@ -2550,7 +2550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330212179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8973093, y: 10.6, z: -10}
+  m_LocalPosition: {x: -6.9000006, y: 10.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3763,6 +3763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f211003c51193bb4a802f90d9fad9ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _tags:
   - Player
   _action:
@@ -6756,10 +6759,12 @@ MonoBehaviour:
     Coins: 0
     Health: 0
     IsArmed: 0
+    Projectiles: 0
   _data:
     Coins: 0
     Health: 10
     IsArmed: 0
+    Projectiles: 0
 --- !u!4 &1270105042
 Transform:
   m_ObjectHideFlags: 0
@@ -7072,16 +7077,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3243034141624592294, guid: 231eade122fd3ce42912731fd5b12035,
-        type: 3}
-      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 167695294}
-    - target: {fileID: 3243034141624592294, guid: 231eade122fd3ce42912731fd5b12035,
-        type: 3}
-      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ArmHero
       objectReference: {fileID: 0}
     - target: {fileID: 3243034141624592315, guid: 231eade122fd3ce42912731fd5b12035,
         type: 3}
