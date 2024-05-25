@@ -4934,6 +4934,8 @@ MonoBehaviour:
     m_Bits: 5376
   _interactionCheck: {fileID: 6430263667379937868}
   _coinsParticles: {fileID: 2129740526}
+  _throwCooldown:
+    value: 1
   _unarmed: {fileID: 9100000, guid: b6f7b8a06fd481c4ea5b2735840c5fb1, type: 2}
   _armed: {fileID: 9100000, guid: cce1c31d6006d0d49b22390ad5d7040b, type: 2}
 --- !u!114 &6087202584541998069

@@ -14,6 +14,7 @@ namespace PixelCrew.Creatures
         [SerializeField] protected LayerMask _groundLayer;
         [SerializeField] private CheckCircleOverlap _interactionCheck;
         [SerializeField] private ParticleSystem _coinsParticles;
+        [SerializeField] private Cooldown _throwCooldown;
 
         [Header("Animators:")]
         [SerializeField] private RuntimeAnimatorController _unarmed;
@@ -151,15 +152,13 @@ namespace PixelCrew.Creatures
         }
         public void StartThrowAnimation()
         {
-            //проверка запаса мечей??
             //проверка прыжка??
             if (!_session.Data.IsArmed) return;
-
-            Debug.Log("Projectiles = " + _session.Data.Projectiles);
             if (_session.Data.Projectiles <= 1) return;
+            if(!_throwCooldown.IsReady) return;
 
+            _throwCooldown.Reset();
             _session.Data.Projectiles -= 1;
-
             Animator.SetTrigger(throwKey);
         }
 
