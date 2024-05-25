@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 2244786681484811428, guid: aa12604b449a0704a82018cc542f7298,
         type: 3}
       propertyPath: m_Name
-      value: FierceTooth Platform
+      value: FierceTooth Platform Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2244786681484811453, guid: aa12604b449a0704a82018cc542f7298,
         type: 3}
@@ -80,6 +80,11 @@ PrefabInstance:
     - target: {fileID: 2244786681484811453, guid: aa12604b449a0704a82018cc542f7298,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087202584541998069, guid: aa12604b449a0704a82018cc542f7298,
+        type: 3}
+      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8580514607236161028, guid: aa12604b449a0704a82018cc542f7298,

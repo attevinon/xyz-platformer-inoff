@@ -53,7 +53,7 @@ namespace PixelCrew.Creatures
             _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
 
             SetAnimationKeys();
-            UpdateSpriteDirection();
+            UpdateSpriteDirection(_direction);
         }
 
         private void SetAnimationKeys()
@@ -68,14 +68,14 @@ namespace PixelCrew.Creatures
             _direction = direction;
         }
 
-        private void UpdateSpriteDirection()
+        public void UpdateSpriteDirection(Vector2 direction)
         {
             float multiplier = _isLooksToTheRight ? 1 : -1;
-            if (_direction.x > 0)
+            if (direction.x > 0)
             {
                 transform.localScale = new Vector3(multiplier, 1, 1);
             }
-            else if (_direction.x < 0)
+            else if (direction.x < 0)
             {
                 transform.localScale = new Vector3(-1 * multiplier, 1, 1);
             }

@@ -57,11 +57,18 @@ namespace PixelCrew.Creatures
         private IEnumerator ReactOnTarget()
         {
             _patrol.enabled = false;
+            LookAtTarget();
 
             _particles.Spawn("Detect");
             yield return new WaitForSeconds(_detectCooldown);
 
             StartState(GoToTarget());
+        }
+        private void LookAtTarget()
+        {
+            var direction = GetDirectionToTarget();
+            _creature.SetDirection(Vector2.zero);
+            _creature.UpdateSpriteDirection(direction);
         }
 
         private IEnumerator GoToTarget()
@@ -86,17 +93,12 @@ namespace PixelCrew.Creatures
             _patrol.enabled = true;
             StartState(_patrol.DoPatrol());
         }
-        private void SetDirectionToTarget()
-        {
-            var direction = _target.transform.position - transform.position;
-            direction.y = 0;
-            _creature.SetDirection(direction.normalized);
-        }
 
         private IEnumerator Attack()
         {
             while (_attackRange.IsTouchingLayer)
             {
+                _creature.SetDirection(Vector2.zero);
                 _creature.StartAttackAnimation();
                 yield return new WaitForSeconds(_attackCooldown);
             }
@@ -104,9 +106,25 @@ namespace PixelCrew.Creatures
             StartState(GoToTarget());
         }
 
+        public void OnDie()
+        {
+            _isDead = true;
+            _creature.SetDirection(Vector2.zero);
+            _collider.direction = CapsuleDirection2D.Horizontal;
+            _animator.SetBool(isDeadKey, true);
+
+            if (_currentCoroutine != null)
+            {
+                StopCoroutine(_currentCoroutine);
+            }
+
+            this.gameObject.layer = LayerMask.NameToLayer("Trash");
+            _patrol.enabled = false;
+            _vision.enabled = false;
+        }
+
         private void StartState(IEnumerator coroutine)
         {
-            _creature.SetDirection(Vector2.zero);
 
             if (_currentCoroutine != null)
             {
@@ -116,19 +134,17 @@ namespace PixelCrew.Creatures
             _currentCoroutine = StartCoroutine(coroutine);
         }
 
-        public void OnDie()
+        private void SetDirectionToTarget()
         {
-            _isDead = true;
-            _collider.direction = CapsuleDirection2D.Horizontal;
-            _animator.SetBool(isDeadKey, true);
+            var direction = GetDirectionToTarget();
+            _creature.SetDirection(direction);
+        }
 
-            if (_currentCoroutine != null)
-            {
-                StopCoroutine(_currentCoroutine);
-            }
-
-            /*var layer = LayerMask.NameToLayer("Trash");
-            gameObject.layer = layer;*/
+        private Vector2 GetDirectionToTarget()
+        {
+            var direction = _target.transform.position - transform.position;
+            direction.y = 0;
+            return direction.normalized;
         }
     }
 }
