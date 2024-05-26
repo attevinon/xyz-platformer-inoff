@@ -17,6 +17,7 @@ namespace PixelCrew.Creatures
         private Creature _creature; 
         void Awake()
         {
+            this.enabled = true;
             _creature = GetComponent<Creature>();
         }
         public override IEnumerator DoPatrol()
@@ -25,10 +26,7 @@ namespace PixelCrew.Creatures
             {
                 if (IsOnPoint() || _obstacleChecker.IsTouchingLayer || !_nextStepChecker.IsTouchingLayer)
                 {
-                    //todo: check are points available just like with hero
-                    //turn on like platform mode if can't reach points
                     _destinationPointIndex = (int)Mathf.Repeat(_destinationPointIndex + 1, _points.Length);
-
                     _creature.SetDirection(Vector2.zero);
                     yield return new WaitForSeconds(_stayOnPointForSec);
                 }

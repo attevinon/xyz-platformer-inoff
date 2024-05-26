@@ -19,7 +19,7 @@ namespace PixelCrew.Creatures
         [SerializeField] private float _detectCooldown;
 
         private bool _isDead;
-        private Coroutine _currentCoroutine;
+        private IEnumerator _currentCoroutine;
 
         private GameObject _target;
         private Creature _creature;
@@ -41,7 +41,6 @@ namespace PixelCrew.Creatures
 
         void Start()
         {
-            _patrol.enabled = true;
             StartState(_patrol.DoPatrol());
         }
 
@@ -56,9 +55,7 @@ namespace PixelCrew.Creatures
 
         private IEnumerator ReactOnTarget()
         {
-            _patrol.enabled = false;
             LookAtTarget();
-
             _particles.Spawn("Detect");
             yield return new WaitForSeconds(_detectCooldown);
 
@@ -89,8 +86,6 @@ namespace PixelCrew.Creatures
 
             _particles.Spawn("Miss");
             yield return new WaitForSeconds(_missCooldown);
-
-            _patrol.enabled = true;
             StartState(_patrol.DoPatrol());
         }
 
@@ -119,19 +114,16 @@ namespace PixelCrew.Creatures
             }
 
             this.gameObject.layer = LayerMask.NameToLayer("Trash");
-            _patrol.enabled = false;
-            _vision.enabled = false;
         }
 
         private void StartState(IEnumerator coroutine)
         {
-
             if (_currentCoroutine != null)
             {
                 StopCoroutine(_currentCoroutine);
             }
-
-            _currentCoroutine = StartCoroutine(coroutine);
+            _currentCoroutine = coroutine;
+            StartCoroutine(coroutine);
         }
 
         private void SetDirectionToTarget()

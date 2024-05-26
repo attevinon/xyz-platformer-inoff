@@ -1091,6 +1091,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FierceTooth Platform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1426206329014150727, guid: 30d3999343397d14c8cbcbd5de6de44f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1426206329014150750, guid: 30d3999343397d14c8cbcbd5de6de44f,
         type: 3}
       propertyPath: m_RootOrder
@@ -7035,6 +7040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FierceTooth Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426206329014150727, guid: 30d3999343397d14c8cbcbd5de6de44f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1426206329014150750, guid: 30d3999343397d14c8cbcbd5de6de44f,
         type: 3}
