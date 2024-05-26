@@ -19,6 +19,7 @@ namespace Model
             }
             else
             {
+                Save();
                 DontDestroyOnLoad(this);
             }
         }
