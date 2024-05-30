@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Multithrow",
+                    "type": "Button",
+                    "id": "067d0167-02b2-4bb4-ae42-950903a18c61",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -175,10 +183,21 @@
                     "name": "",
                     "id": "bc71773d-4905-4504-8028-3beb648e17d5",
                     "path": "<Keyboard>/q",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e408d9f-49e5-4b65-9e4a-99b19700f4cb",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Multithrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

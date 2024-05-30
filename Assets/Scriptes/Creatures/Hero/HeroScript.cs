@@ -1,7 +1,6 @@
 ﻿using Model;
 using PixelCrew.Utils;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelCrew.Creatures
@@ -15,12 +14,15 @@ namespace PixelCrew.Creatures
         [SerializeField] private CheckCircleOverlap _interactionCheck;
         [SerializeField] private ParticleSystem _coinsParticles;
         [SerializeField] private Cooldown _throwCooldown;
+        [SerializeField] private int _projectilesPerMultithrow;
+        [SerializeField] private float _secBetweenProjectilesInMultithrow;
 
         [Header("Animators:")]
         [SerializeField] private RuntimeAnimatorController _unarmed;
         [SerializeField] private RuntimeAnimatorController _armed;
 
         private bool _allowDoubleJump;
+        private bool IsAbleToThrow => _session.Data.IsArmed && _session.Data.Projectiles > 1;
 
         private GameSession _session;
 
@@ -150,16 +152,37 @@ namespace PixelCrew.Creatures
 
             base.StartAttackAnimation();
         }
+
         public void StartThrowAnimation()
         {
             //проверка прыжка??
-            if (!_session.Data.IsArmed) return;
-            if (_session.Data.Projectiles <= 1) return;
+            if(!IsAbleToThrow) return;
             if(!_throwCooldown.IsReady) return;
 
-            _throwCooldown.Reset();
             _session.Data.Projectiles -= 1;
             Animator.SetTrigger(throwKey);
+            _throwCooldown.Reset();
+            Debug.Log("Projectiles = " + _session.Data.Projectiles);
+        }
+
+        public void StartMultithrow()
+        {
+            if (!IsAbleToThrow) return;
+            if (!_throwCooldown.IsReady) return;
+            StartCoroutine(MultithrowCoroutine());
+        }
+
+        private IEnumerator MultithrowCoroutine()
+        {
+            for (int i = 0; i <= _projectilesPerMultithrow; i++)
+            {
+                if (_session.Data.Projectiles <= 1) break;
+                _session.Data.Projectiles -= 1;
+                Animator.SetTrigger(throwKey);
+                yield return new WaitForSeconds(_secBetweenProjectilesInMultithrow);
+            }
+            _throwCooldown.Reset();
+            Debug.Log("Projectiles = " + _session.Data.Projectiles);
         }
 
         public void DoThrow()

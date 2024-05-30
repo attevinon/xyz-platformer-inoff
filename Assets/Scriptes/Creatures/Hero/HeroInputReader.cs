@@ -29,6 +29,14 @@ namespace PixelCrew
             }
         }
 
+        public void OnMultithrowInput(InputAction.CallbackContext callback)
+        {
+            if (callback.performed)
+            {
+                _hero.StartMultithrow();
+            }
+        }
+
         public void OnInteractionInput(InputAction.CallbackContext callback)
         {
             if (callback.performed)
