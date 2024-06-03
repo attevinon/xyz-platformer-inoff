@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Model
+namespace PixelCrew.Model
 {
     [Serializable]
     public class PlayerData

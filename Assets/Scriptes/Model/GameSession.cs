@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Model
+namespace PixelCrew.Model
 {
     public class GameSession : MonoBehaviour
     {

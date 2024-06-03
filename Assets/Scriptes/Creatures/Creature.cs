@@ -1,7 +1,6 @@
-﻿using PixelCrew.Utils;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using PixelCrew.Components.ColliderBased;
+using PixelCrew.Components.GoBased;
 
 namespace PixelCrew.Creatures
 {

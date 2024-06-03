@@ -1,9 +1,12 @@
-﻿using Model;
-using PixelCrew.Utils;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using PixelCrew.Components.ColliderBased;
+using PixelCrew.Components.Interactions;
+using PixelCrew.Components.Health;
+using PixelCrew.Model;
+using PixelCrew.Utils;
 
-namespace PixelCrew.Creatures
+namespace PixelCrew.Creatures.Hero
 {
     [RequireComponent(typeof(HealthComponent))]
     public class HeroScript : Creature
