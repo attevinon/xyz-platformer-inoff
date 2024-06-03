@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Heavy
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,11 +17,11 @@ TagManager:
   - 
   - Ground
   - Interactable
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Chars
+  - Trash
+  - PropsGround
+  - Loot
+  - Hero
   - 
   - 
   - 
@@ -43,6 +45,9 @@ TagManager:
     locked: 0
   - name: BG
     uniqueID: 1715389409
+    locked: 0
+  - name: BehindPlatforms
+    uniqueID: 3629804439
     locked: 0
   - name: Platforms
     uniqueID: 689846041

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,7 +13,7 @@ public class AnimatorComponent : MonoBehaviour
     private int _currentFrameIndex;
     private float _secondsPerFrame;
     private float _nextFrameTime;
-    private bool _isPlaying = true; //ne vse zavisit ot OnBecomeVisible
+    //private bool _isPlaying = true; 
 
     private void Awake()
     {
@@ -46,7 +44,7 @@ public class AnimatorComponent : MonoBehaviour
     private void StartAnimation()
     {
         _nextFrameTime = Time.time + _secondsPerFrame;
-        enabled = _isPlaying;
+        enabled = true;
         _currentFrameIndex = 0;
     }
 
@@ -62,7 +60,7 @@ public class AnimatorComponent : MonoBehaviour
             }
             else
             {
-                enabled = _isPlaying;
+                enabled = state.AllowNext;
                 state.OnComplete?.Invoke();
 
                 if (state.AllowNext)
@@ -92,7 +90,7 @@ public class AnimatorComponent : MonoBehaviour
         }
 
         Debug.Log($"There is no state with name {name} in {this.name}");
-        enabled = _isPlaying = false;
+        //enabled = _isPlaying = false;
     }
 }
 

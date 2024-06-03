@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,10 +10,17 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private UnityEvent _onDamage;
     [SerializeField] private UnityEvent _onHeal;
     [SerializeField] private UnityEvent _onDie;
+    [SerializeField] private HealthChangedEvent _onChanged;
+
+    public void SetHealth(int health)
+    {
+        _health = health;
+    }
 
     public void ApplyHealthImpact(int impactValue)
     {
         _health += impactValue;
+        _onChanged?.Invoke(_health);
 
         if (impactValue > 0)
         {
@@ -23,14 +31,18 @@ public class HealthComponent : MonoBehaviour
             if (_health <= 0)
             {
                 _onDie?.Invoke();
+                return;
             }
             else
             {
                 _onDamage?.Invoke();
             }
-            
         }
-        
-        Debug.Log("your health = " + _health);
+       
+    }
+
+    [Serializable]
+    public class HealthChangedEvent : UnityEvent<int>
+    {
     }
 }
