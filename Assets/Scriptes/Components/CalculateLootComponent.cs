@@ -31,12 +31,12 @@ namespace PixelCrew.Components
         public void CalculateLoot()
         {
             _lootAmount = UnityEngine.Random.Range(_minLootAmount, _maxLootAmount);
-
             if (_lootAmount == 0)
+            {
+                Debug.LogWarning("Не установлено количество лута для " + gameObject.name);
                 return;
-
+            }
             _currentLoot = new GameObject[_lootAmount];
-
             _sortedLootVariations = new List<LootData>(_lootVariations.OrderBy(loot => loot.propability));
             _totalPropability = _lootVariations.Sum(loot => loot.propability);
 
@@ -45,31 +45,29 @@ namespace PixelCrew.Components
             while (i < _lootAmount)
             {
                 var lootPrefab = GetRandomLoot();
-
                 if (lootPrefab != null)
                 {
                     _currentLoot[i] = lootPrefab;
                     i++;
                 }
+                //если null то i не изменяется и снова подбирается предмет на этот индекс
             }
             _onLootCalculated?.Invoke(_currentLoot);
         }
 
         private GameObject GetRandomLoot()
         {
-            //float randomValue = UnityEngine.Random.Range(0f, 1f) * _totalPropability;
-            float randomValue = UnityEngine.Random.Range(0f, 100f);
-
-            for (int i = 0; i < _sortedLootVariations.Count; i++)
+            float randomValue = UnityEngine.Random.value * _totalPropability;
+            float current = 0f;
+            foreach (var loot in _sortedLootVariations)
             {
-                LootData loot = _sortedLootVariations[i];
+                current += loot.propability;
 
-                if (loot.propability >= randomValue)
+                if (current >= randomValue)
                 {
                     return loot.prefab;
                 }
             }
-
             return null;
         }
 

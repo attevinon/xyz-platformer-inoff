@@ -364,6 +364,7 @@ GameObject:
   - component: {fileID: 2322490911673512345}
   - component: {fileID: 1043626427559911311}
   - component: {fileID: 5031942465195463114}
+  - component: {fileID: 5329362990777816470}
   m_Layer: 0
   m_Name: Loot
   m_TagString: Untagged
@@ -440,3 +441,30 @@ MonoBehaviour:
   _speed: 3
   _itemPerBurst: 2
   _particle: {fileID: 0}
+  _onSpawned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5329362990777816470}
+        m_MethodName: DestroyObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5329362990777816470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3776476037601110941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2370de0c442f00648b9bd9d1b1361abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 3776476037601110941}

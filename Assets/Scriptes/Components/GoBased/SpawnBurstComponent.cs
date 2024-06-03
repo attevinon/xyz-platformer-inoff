@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PixelCrew.Components.GoBased
 {
@@ -18,8 +19,8 @@ namespace PixelCrew.Components.GoBased
         [SerializeField] private float _waitTime = 0.1f;
         [SerializeField] private float _speed = 6;
         [SerializeField] private float _itemPerBurst = 1;
-
         [SerializeField] private GameObject _particle;
+        [SerializeField] private UnityEvent _onSpawned;
 
         private Coroutine _routine;
         private bool _isEnabled;
@@ -54,6 +55,8 @@ namespace PixelCrew.Components.GoBased
 
                 yield return new WaitForSeconds(_waitTime);
             }
+
+            _onSpawned?.Invoke();
         }
 
         private IEnumerator SpawnBurst()
@@ -70,6 +73,8 @@ namespace PixelCrew.Components.GoBased
 
                 yield return new WaitForSeconds(_waitTime);
             }
+
+            _onSpawned?.Invoke();
         }
 
         [ContextMenu("Spawn one")]
