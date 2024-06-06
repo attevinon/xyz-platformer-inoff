@@ -2,30 +2,14 @@
 
 namespace PixelCrew.Creatures.Weapons
 {
-    [RequireComponent(typeof(Rigidbody2D))]
-    public class Projectile : MonoBehaviour
+    public class Projectile : BaseProjectile
     {
-        [SerializeField] private float _speed;
-        [SerializeField] private bool _flip;
-
-        private int _direction;
-        private Rigidbody2D _rigidbody;
-
-        void Awake()
+        protected override void Start()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-        }
+            base.Start();
 
-        void Start()
-        {
-            _direction = _flip || transform.lossyScale.x < 0 ? -1 : 1;
-        }
-
-        void FixedUpdate()
-        {
-            var position = _rigidbody.position;
-            position.x += (_speed * _direction);
-            _rigidbody.MovePosition(position);
+            var force = new Vector2(Direction * Speed, 0);
+            Rigidbody.AddForce(force, ForceMode2D.Impulse); ;
         }
     }
 }

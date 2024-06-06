@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8149270938081791062}
   - component: {fileID: 595685933924649440}
-  - component: {fileID: 1884831243475125246}
+  - component: {fileID: -2012771083146280029}
   - component: {fileID: 667951392683218280}
   - component: {fileID: 7935912349251319845}
   - component: {fileID: 3445094493693056078}
   - component: {fileID: 3236399089114045007}
   - component: {fileID: 2265575696305166836}
   m_Layer: 10
-  m_Name: PearlProjectile
+  m_Name: PearlSinusoidalProjectile
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1884831243475125246
+--- !u!114 &-2012771083146280029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,11 +96,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6786011970618045244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a4dffc4d561ea644a43a67c76da3ec2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3dbaa60351b6ffa4d8dd00f9fda4781e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _flip: 1
-  Speed: 3.5
+  Speed: 0.05
+  _frequency: 5
+  _amplitude: 0.15
 --- !u!114 &667951392683218280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +194,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6786011970618045244}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
