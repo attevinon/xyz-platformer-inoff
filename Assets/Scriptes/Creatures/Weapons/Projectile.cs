@@ -3,9 +3,10 @@
 namespace PixelCrew.Creatures.Weapons
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class SwordProjectile : MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
         [SerializeField] private float _speed;
+        [SerializeField] private bool _flip;
 
         private int _direction;
         private Rigidbody2D _rigidbody;
@@ -17,7 +18,7 @@ namespace PixelCrew.Creatures.Weapons
 
         void Start()
         {
-            _direction = transform.lossyScale.x > 0 ? 1 : -1;
+            _direction = _flip || transform.lossyScale.x < 0 ? -1 : 1;
         }
 
         void FixedUpdate()

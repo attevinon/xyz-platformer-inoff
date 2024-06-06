@@ -17,10 +17,10 @@ TagManager:
   - 
   - Ground
   - Interactable
-  - Chars
+  - Enemy
   - Trash
   - PropsGround
-  - Loot
+  - Collectabiles
   - Hero
   - 
   - 

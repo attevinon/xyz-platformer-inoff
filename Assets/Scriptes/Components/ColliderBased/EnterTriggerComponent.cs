@@ -14,6 +14,11 @@ namespace PixelCrew.Components.ColliderBased
             if (_layer != ~0)
             {
                 if (!collision.gameObject.IsInLayer(_layer)) return;
+                if(_tags?.Length == 0)
+                {
+                    _action?.Invoke(collision.gameObject);
+                    return;
+                }
             }
 
             foreach (var tag in _tags)
@@ -24,6 +29,7 @@ namespace PixelCrew.Components.ColliderBased
                     return;
                 }
             }
+
         }
     }
 }
