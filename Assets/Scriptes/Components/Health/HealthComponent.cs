@@ -9,8 +9,8 @@ namespace PixelCrew.Components.Health
         [SerializeField] private int _health;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onHeal;
-        [SerializeField] private UnityEvent _onDie;
         [SerializeField] private HealthChangedEvent _onChanged;
+        [SerializeField] public UnityEvent OnDie;
 
         public void SetHealth(int health)
         {
@@ -30,7 +30,7 @@ namespace PixelCrew.Components.Health
             {
                 if (_health <= 0)
                 {
-                    _onDie?.Invoke();
+                    OnDie?.Invoke();
                     return;
                 }
                 else
@@ -38,7 +38,11 @@ namespace PixelCrew.Components.Health
                     _onDamage?.Invoke();
                 }
             }
+        }
 
+        private void OnDestroy()
+        {
+            OnDie.RemoveAllListeners();
         }
 
         [Serializable]

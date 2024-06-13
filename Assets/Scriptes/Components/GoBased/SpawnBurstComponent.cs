@@ -31,6 +31,15 @@ namespace PixelCrew.Components.GoBased
             this.transform.position = _transform.position;
         }
 
+        public void SpawnImmediate(GameObject[] particles)
+        {
+            foreach (var particle in particles)
+            {
+                Spawn(particle);
+            }
+            _onSpawned?.Invoke();
+        }
+
         public void StartSpawn(GameObject[] particles)
         {
             Prepeare();

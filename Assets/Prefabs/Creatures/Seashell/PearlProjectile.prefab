@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2265575696305166836}
   m_Layer: 10
   m_Name: PearlProjectile
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer:
     serializedVersion: 2
-    m_Bits: 21760
+    m_Bits: 20736
   _tags: []
   _action:
     m_PersistentCalls:

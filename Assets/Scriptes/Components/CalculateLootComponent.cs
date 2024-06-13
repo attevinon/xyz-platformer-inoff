@@ -80,11 +80,11 @@ namespace PixelCrew.Components
             public GameObject prefab => _prefab;
             public float propability => _probability;
         }
+    }
 
-        [Serializable]
-        public class LootEvent : UnityEvent<GameObject[]>
-        {
+    [Serializable]
+    public class LootEvent : UnityEvent<GameObject[]>
+    {
 
-        }
     }
 }

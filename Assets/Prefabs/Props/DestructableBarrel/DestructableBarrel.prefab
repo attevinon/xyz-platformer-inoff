@@ -164,6 +164,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  isCustomFirstClip: 0
+  firstClip: 0
 --- !u!114 &5442008803781392035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +213,10 @@ MonoBehaviour:
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
-  _onDie:
+  _onChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 500192264830917895}
@@ -225,9 +230,6 @@ MonoBehaviour:
           m_StringArgument: destroyed
           m_BoolArgument: 0
         m_CallState: 2
-  _onChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8304383739167928134
 MonoBehaviour:
   m_ObjectHideFlags: 0

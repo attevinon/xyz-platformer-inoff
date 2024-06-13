@@ -9,6 +9,8 @@ namespace PixelCrew.Components
     {
         [SerializeField][Range(1, 60)] private int _frameRate = 10;
         [SerializeField] private AnimationState[] _states;
+        [SerializeField] bool isCustomFirstClip;
+        [SerializeField] int firstClip;
 
         private SpriteRenderer _render;
         private int _currentStateIndex;
@@ -30,6 +32,10 @@ namespace PixelCrew.Components
 
         private void Start()
         {
+            if (isCustomFirstClip)
+            {
+                _currentStateIndex = firstClip;
+            }
             StartAnimation();
         }
 

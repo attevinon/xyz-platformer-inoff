@@ -182,7 +182,10 @@ MonoBehaviour:
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
-  _onDie:
+  _onChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4126444250714096873}
@@ -196,20 +199,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2244786681484811426}
-        m_MethodName: set_sortingLayerName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: BehindPlatforms
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7300611380473513128
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,63 +2,58 @@
 using PixelCrew.Components.ColliderBased;
 using PixelCrew.Components.GoBased;
 using PixelCrew.Utils;
-using UnityEngine.PlayerLoop;
+using UnityEngine.Events;
 
-public class ShootingTrapAI : MonoBehaviour
+namespace PixelCrew.Creatures.Mobs
 {
-    [Header("Range")]
-    [SerializeField] private LayerChecker _vision;
-    [SerializeField] private SpawnComponent _rangeAttackSpawner;
-    [SerializeField] private Cooldown _rangeCooldown;
-
-    [Header("Melee")]
-    [SerializeField] private LayerChecker _meleeCanAttack;
-    [SerializeField] private CheckCircleOverlap _meleeAttack;
-    [SerializeField] private Cooldown _meleeCooldown;
-
-
-    private GameObject _target;
-    private Animator _animator;
-    static readonly int meleeKey = Animator.StringToHash("melee");
-    static readonly int rangeKey = Animator.StringToHash("range");
-    private void Awake()
+    public class ShootingTrapAI : MonoBehaviour
     {
-        _animator = GetComponent<Animator>();
-    }
+        [Header("Range")]
+        [SerializeField] private LayerChecker _vision;
+        [SerializeField] private SpawnComponent _rangeAttackSpawner;
+        [SerializeField] private Cooldown _rangeCooldown;
 
-    private void Update()
-    {
-        if (_vision.IsTouchingLayer)
+        public UnityEvent OnTargetInVision;  
+        protected Animator Animator;
+        static readonly int rangeKey = Animator.StringToHash("range");
+        public LayerChecker Vision => _vision;
+
+        private void Awake()
         {
-            if(_meleeCanAttack.IsTouchingLayer)
+            if (TryGetComponent(out Animator animator))
             {
-                if(_meleeCooldown.IsReady) StartMeleeAttackAnimation();
-                return;
+                Animator = animator;
             }
-
-            if(_rangeCooldown.IsReady) StartRangeAttackAnimation();
         }
-    }
 
-    private void StartMeleeAttackAnimation()
-    {
-        _animator.SetTrigger(meleeKey);
-        _meleeCooldown.Reset();
-    }
+        protected virtual void Update()
+        {
+            if (_vision.IsTouchingLayer)
+            {
+                if (_rangeCooldown.IsReady)
+                {
+                    if(Animator != null)
+                    {
+                        StartRangeAttackAnimation();
+                    }
+                    else
+                    {
+                        OnTargetInVision?.Invoke();
+                        _rangeCooldown.Reset();
+                    }
+                }
+            }
+        }
 
-    public void DoMeleeAttack()
-    {
-        _meleeAttack.CheckOverlap();
-    }
+        private void StartRangeAttackAnimation()
+        {
+            Animator.SetTrigger(rangeKey);
+            _rangeCooldown.Reset();
+        }
 
-    private void StartRangeAttackAnimation()
-    {
-        _animator.SetTrigger(rangeKey);
-        _rangeCooldown.Reset();
-    }
-
-    public void DoRangeAttack()
-    {
-        _rangeAttackSpawner.Spawn();
+        public void DoRangeAttack()
+        {
+            _rangeAttackSpawner.Spawn();
+        }
     }
 }
