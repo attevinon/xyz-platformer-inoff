@@ -20,11 +20,11 @@ namespace PixelCrew.Creatures.Mobs
                 if (_meleeCooldown.IsReady)
                 {
                     StartMeleeAttackAnimation();
-                    return;
                 }
-
-                base.Update();
+                return;
             }
+
+            base.Update();
         }
 
         private void StartMeleeAttackAnimation()

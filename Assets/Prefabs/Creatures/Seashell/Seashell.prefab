@@ -56,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7202142476854267985}
   - component: {fileID: 7202142476854267988}
-  - component: {fileID: 7202142476854267991}
   - component: {fileID: 7202142476854267990}
   m_Layer: 0
   m_Name: Vision
@@ -94,37 +93,6 @@ MonoBehaviour:
   _layer:
     serializedVersion: 2
     m_Bits: 16384
---- !u!114 &7202142476854267991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202142476854267984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f211003c51193bb4a802f90d9fad9ef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _layer:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  _tags:
-  - Player
-  _action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7202142477887753650}
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!61 &7202142476854267990
 BoxCollider2D:
   m_ObjectHideFlags: 0
