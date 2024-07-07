@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3243034141624592292}
   - component: {fileID: 3243034141624592295}
   - component: {fileID: 3243034141624592294}
-  - component: {fileID: -5777435951794880417}
+  - component: {fileID: 6474042038191753735}
   - component: {fileID: 3243034141624592313}
   - component: {fileID: 3243034141624592312}
   m_Layer: 0
@@ -137,8 +137,8 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -5777435951794880417}
-        m_MethodName: ArmHero
+      - m_Target: {fileID: 6474042038191753735}
+        m_MethodName: AddToInventory
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -159,7 +159,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-5777435951794880417
+--- !u!114 &6474042038191753735
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,9 +168,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3243034141624592315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7aefe37197e44409cff4d1bb605745, type: 3}
+  m_Script: {fileID: 11500000, guid: df8c9b901dab2cf44a9daf8f68ab704a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: sword
+  _count: 1
 --- !u!114 &3243034141624592313
 MonoBehaviour:
   m_ObjectHideFlags: 0

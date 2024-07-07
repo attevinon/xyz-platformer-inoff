@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8426686707744201140}
   - component: {fileID: 8426686707744201143}
-  - component: {fileID: 8426686707744201142}
-  - component: {fileID: 3925276385026520184}
   - component: {fileID: 2262006398667671749}
   - component: {fileID: -9116208761150286413}
-  - component: {fileID: 3628716152457851699}
+  - component: {fileID: 1646867461458488389}
   - component: {fileID: 8426686707744201144}
+  - component: {fileID: 8426686707744201142}
+  - component: {fileID: 3925276385026520184}
   m_Layer: 13
   m_Name: Silver Coin Particle
   m_TagString: Untagged
@@ -88,43 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &8426686707744201142
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8426686707744201147}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.171875
---- !u!50 &3925276385026520184
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8426686707744201147}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &2262006398667671749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +134,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  isCustomFirstClip: 0
+  firstClip: 0
 --- !u!114 &-9116208761150286413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,14 +148,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8f0b1c36374874499fc57856ff64c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _tags:
   - Player
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3628716152457851699}
-        m_MethodName: IncreaseScore
-        m_Mode: 1
+      - m_Target: {fileID: 1646867461458488389}
+        m_MethodName: AddToInventory
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -210,7 +178,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3628716152457851699
+--- !u!114 &1646867461458488389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,10 +187,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8426686707744201147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720f2fb66008d2345886a61a60aa8287, type: 3}
+  m_Script: {fileID: 11500000, guid: df8c9b901dab2cf44a9daf8f68ab704a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinValue: 1
+  _id: coin
+  _count: 1
 --- !u!114 &8426686707744201144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +205,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 8426686707744201147}
+--- !u!58 &8426686707744201142
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426686707744201147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.171875
+--- !u!50 &3925276385026520184
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426686707744201147}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

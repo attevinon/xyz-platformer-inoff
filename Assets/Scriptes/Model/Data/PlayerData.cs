@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PixelCrew.Model.Data;
+using System;
 using UnityEngine;
 
 namespace PixelCrew.Model
@@ -6,11 +7,10 @@ namespace PixelCrew.Model
     [Serializable]
     public class PlayerData
     {
-        public int Coins;
-        public int Health;
-        public bool IsArmed;
-        public int Projectiles;
+        [SerializeField] private InventoryData _inventory;
 
+        public int Health;
+        public InventoryData Inventory => _inventory;
         public PlayerData Clone()
         {
             var jsonClone = JsonUtility.ToJson(this);

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8367093691836094812}
   - component: {fileID: 2272131286936799278}
   - component: {fileID: 8367093691836094802}
-  - component: {fileID: -5568784954555567144}
+  - component: {fileID: 2821059571517568400}
   - component: {fileID: 8367093691836094803}
   - component: {fileID: 8367093691836094813}
   - component: {fileID: 6147691311965581611}
@@ -167,9 +167,9 @@ MonoBehaviour:
           m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -5568784954555567144}
-        m_MethodName: IncreaseScore
-        m_Mode: 1
+      - m_Target: {fileID: 2821059571517568400}
+        m_MethodName: AddToInventory
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -178,7 +178,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-5568784954555567144
+--- !u!114 &2821059571517568400
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,10 +187,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8367093691836094800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720f2fb66008d2345886a61a60aa8287, type: 3}
+  m_Script: {fileID: 11500000, guid: df8c9b901dab2cf44a9daf8f68ab704a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinValue: 1
+  _id: coin
+  _count: 1
 --- !u!114 &8367093691836094803
 MonoBehaviour:
   m_ObjectHideFlags: 0

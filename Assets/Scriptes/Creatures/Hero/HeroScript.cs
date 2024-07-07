@@ -5,6 +5,7 @@ using PixelCrew.Components.Interactions;
 using PixelCrew.Components.Health;
 using PixelCrew.Model;
 using PixelCrew.Utils;
+using System;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -25,7 +26,8 @@ namespace PixelCrew.Creatures.Hero
         [SerializeField] private RuntimeAnimatorController _armed;
 
         private bool _allowDoubleJump;
-        private bool IsAbleToThrow => _session.Data.IsArmed && _session.Data.Projectiles > 1;
+        private int SwordsCount => _session.Data.Inventory.Count(Constants.ItemsId.SWORD);
+        private int CoinsCount => _session.Data.Inventory.Count(Constants.ItemsId.COIN);
 
         private GameSession _session;
 
@@ -43,12 +45,9 @@ namespace PixelCrew.Creatures.Hero
             var health = GetComponent<HealthComponent>();
             health.SetHealth(_session.Data.Health);
 
-            UpdateHeroWeapon();
+            _session.Data.Inventory.OnInventoryChanged += OnInventoryChanged;
 
-            if(_session.Data.IsArmed && _session.Data.Projectiles <= 0)
-            {
-                _session.Data.Projectiles = 1;
-            }
+            UpdateHeroWeapon();
         }
 
         protected override void Update()
@@ -95,43 +94,6 @@ namespace PixelCrew.Creatures.Hero
             }
         }
 
-        public void OnHealthChanged(int health)
-        {
-            _session.Data.Health = health;
-        }
-        public void TakeHealing()
-        {
-            //хочу сюда анимацию добавить
-        }
-        public override void TakeDamage()
-        {
-            base.TakeDamage();
-
-            if (_session.Data.Coins > 0)
-            {
-                DropCoins();
-            }
-        }
-
-        private void DropCoins()
-        {
-            int coinsToDrop = Mathf.Min(_session.Data.Coins, 5);
-            _session.Data.Coins -= coinsToDrop;
-
-            var coinsBurst = _coinsParticles.emission.GetBurst(0);
-            coinsBurst.count = coinsToDrop;
-            _coinsParticles.emission.SetBurst(0, coinsBurst);
-
-            _coinsParticles.gameObject.SetActive(true);
-            _coinsParticles.Play();
-        }
-
-        public void RefillScore(int value)
-        {
-            _session.Data.Coins += value;
-            Debug.Log("Total Coins: " + _session.Data.Coins);
-        }
-
         public void Interact()
         {
             _interactionCheck.CheckOverlap();
@@ -149,28 +111,67 @@ namespace PixelCrew.Creatures.Hero
             interactable.Interact();
         }
 
+        public void OnHealthChanged(int health)
+        {
+            _session.Data.Health = health;
+        }
+        public void TakeHealing()
+        {
+            //хочу сюда анимацию добавить
+        }
+
+        public override void TakeDamage()
+        {
+            base.TakeDamage();
+            if (CoinsCount > 0)
+                DropCoins();
+        }
+
+        private void DropCoins()
+        {
+            int coinsToDrop = Mathf.Min(CoinsCount, 5);
+            _session.Data.Inventory.Remove(Constants.ItemsId.COIN, coinsToDrop);
+
+            var coinsBurst = _coinsParticles.emission.GetBurst(0);
+            coinsBurst.count = coinsToDrop;
+            _coinsParticles.emission.SetBurst(0, coinsBurst);
+
+            _coinsParticles.gameObject.SetActive(true);
+            _coinsParticles.Play();
+        }
+
+        public void AddToInventory(string id, int value)
+        {
+            _session.Data.Inventory.Add(id, value);
+        }
+
+        private void OnInventoryChanged(string id, int count)
+        {
+            if (id == Constants.ItemsId.SWORD)
+                UpdateHeroWeapon();
+        }
+
         public override void StartAttackAnimation()
         {
-            if (!_session.Data.IsArmed) return;
-
+            if (SwordsCount <=0) return;
             base.StartAttackAnimation();
         }
 
         public void StartThrowAnimation()
         {
             //проверка прыжка??
-            if(!IsAbleToThrow) return;
+            if(SwordsCount <= 1) return;
             if(!_throwCooldown.IsReady) return;
 
-            _session.Data.Projectiles -= 1;
+            _session.Data.Inventory.Remove(Constants.ItemsId.SWORD, 1);
             Animator.SetTrigger(throwKey);
             _throwCooldown.Reset();
-            Debug.Log("Projectiles = " + _session.Data.Projectiles);
+            Debug.Log("Projectiles = " + SwordsCount);
         }
 
         public void StartMultithrow()
         {
-            if (!IsAbleToThrow) return;
+            if (SwordsCount <= 1) return;
             if (!_throwCooldown.IsReady) return;
             StartCoroutine(MultithrowCoroutine());
         }
@@ -179,13 +180,13 @@ namespace PixelCrew.Creatures.Hero
         {
             for (int i = 0; i <= _projectilesPerMultithrow; i++)
             {
-                if (_session.Data.Projectiles <= 1) break;
-                _session.Data.Projectiles -= 1;
+                if (SwordsCount <= 1) break;
+                _session.Data.Inventory.Remove(Constants.ItemsId.SWORD, 1);
                 Animator.SetTrigger(throwKey);
                 yield return new WaitForSeconds(_secBetweenProjectilesInMultithrow);
             }
             _throwCooldown.Reset();
-            Debug.Log("Projectiles = " + _session.Data.Projectiles);
+            Debug.Log("Projectiles = " + SwordsCount);
         }
 
         public void DoThrow()
@@ -193,21 +194,14 @@ namespace PixelCrew.Creatures.Hero
             _particlesSpawners.Spawn("Throw");
         }
 
-        public void ArmHero()
-        {
-            if (!_session.Data.IsArmed)
-            {
-                _session.Data.IsArmed = true;
-                UpdateHeroWeapon();
-            }
-
-            _session.Data.Projectiles += 1;
-            Debug.Log("Projectiles = " + _session.Data.Projectiles);
-        }
-
         public void UpdateHeroWeapon()
         {
-            Animator.runtimeAnimatorController = (_session.Data.IsArmed) ? _armed : _unarmed;
+            Animator.runtimeAnimatorController = SwordsCount >= 1 ? _armed : _unarmed;
+        }
+
+        private void OnDestroy()
+        {
+            _session.Data.Inventory.OnInventoryChanged -= OnInventoryChanged;
         }
     }
 }

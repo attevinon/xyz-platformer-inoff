@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090aa6e9a75af0c47b0d586a9e1901fe, type: 3}
   m_Name: ItemsDefinition
   m_EditorClassIdentifier: 
+  _items:
+  - _id: coin
+  - _id: potion
+  - _id: sword

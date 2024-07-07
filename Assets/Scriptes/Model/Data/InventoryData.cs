@@ -8,7 +8,9 @@ namespace PixelCrew.Model.Data
     [Serializable]
     public class InventoryData
     {
-        private List<InventoryItemData> _inventory = new List<InventoryItemData>();
+        [SerializeField] private List<InventoryItemData> _inventory = new List<InventoryItemData>();
+
+        public event Action<string, int> OnInventoryChanged;
 
         public void Add(string id, int value)
         {
@@ -18,10 +20,12 @@ namespace PixelCrew.Model.Data
             var item = GetItem(id);
             if(item == null)
             {
-                var newItem = new InventoryItemData(id);
-                _inventory.Add(newItem);
+                item = new InventoryItemData(id);
+                _inventory.Add(item);
             }
             item.Value += value;
+
+            OnInventoryChanged?.Invoke(id,Count(id));
         }
 
         public void Remove(string id, int value)
@@ -34,6 +38,8 @@ namespace PixelCrew.Model.Data
 
             if(item.Value <= 0)
                 _inventory.Remove(item);
+
+            OnInventoryChanged?.Invoke(id, Count(id));
         }
         
         public int Count(string id)
