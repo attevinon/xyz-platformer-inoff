@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items:
   - _id: coin
-  - _id: potion
   - _id: sword
+  - _id: key

@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 5503220514987424911}
   - component: {fileID: 969754365871674739}
   - component: {fileID: 552973934470814051}
+  - component: {fileID: 3301177684782278403}
   - component: {fileID: 3371551699643136289}
   - component: {fileID: 3562161733983083946}
   m_Layer: 9
-  m_Name: Wooden Door
+  m_Name: Wooden Door Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,6 +143,8 @@ MonoBehaviour:
     _onComplete:
       m_PersistentCalls:
         m_Calls: []
+  isCustomFirstClip: 0
+  firstClip: 0
 --- !u!114 &552973934470814051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +158,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3301177684782278403}
+        m_MethodName: Check
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3301177684782278403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5354450782886961234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1977ac77805a62c479ad7133aef0b1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _requiredItems:
+  - Id: key
+    Value: 1
+  - Id: coin
+    Value: 4
+  _removeAfterUse: 1
+  _onSussess:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 969754365871674739}
@@ -179,6 +214,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onFail:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3371551699643136289
 MonoBehaviour:
   m_ObjectHideFlags: 0
