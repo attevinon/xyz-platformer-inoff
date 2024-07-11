@@ -111,6 +111,21 @@ namespace PixelCrew.Creatures.Hero
             interactable.Interact();
         }
 
+        public void UseHealPotion()
+        {
+            if (_session.Data.Inventory.Count(Constants.ItemsId.POTION) <= 0)
+            {
+                Debug.Log("No heal potions in the inventory");
+                return;
+            }
+
+            bool isUsed = _session.Data.Inventory.TryUseItem(Constants.ItemsId.POTION);
+            if (!isUsed) return;
+            _session.Data.Inventory.Remove(Constants.ItemsId.POTION, 1);
+            Debug.Log("UI: Heal Potion successfully used");
+            Debug.Log("UI: Heal Potions left: " + _session.Data.Inventory.Count(Constants.ItemsId.POTION));
+        }
+
         public void OnHealthChanged(int health)
         {
             _session.Data.Health = health;

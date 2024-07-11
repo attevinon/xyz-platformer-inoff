@@ -53,6 +53,21 @@ namespace PixelCrew.Model.Data
             return count;  
         }
 
+        public bool TryUseItem(string id)
+        {
+            if (IsNoDef(id)) return false;
+            var itemDef = DefsFacade.I.ItemsDef.Get(id);
+
+            if(itemDef.OnUse == null)
+            {
+                Debug.LogWarning($"{id} use is unspecified");
+                return false;
+            }
+
+            itemDef.OnUse.Invoke();
+            return true;
+        }
+
         private InventoryItemData GetItem(string id)
         {
             foreach (var item in _inventory)
@@ -67,7 +82,7 @@ namespace PixelCrew.Model.Data
         {
             var itemDef = DefsFacade.I.ItemsDef.Get(id);
             if (itemDef.IsVoid)
-                Debug.Log($"Definition for item with id={id} is not found");
+                Debug.LogWarning($"Definition for item with id={id} is not found");
 
             return itemDef.IsVoid;
         }

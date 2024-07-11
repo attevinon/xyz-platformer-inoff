@@ -5119,7 +5119,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2244786681484811424}
-        m_MethodName: OnTrowInput
+        m_MethodName: OnThrowInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5146,6 +5146,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 067d0167-02b2-4bb4-ae42-950903a18c61
     m_ActionName: Hero/Multithrow[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2244786681484811424}
+        m_MethodName: OnUseHealPotionInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c633de9e-7eb1-41d6-bc4e-569c58577101
+    m_ActionName: Hero/Use[/Keyboard/h]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2160960290869816530}
   - component: {fileID: 6138405464829424917}
   - component: {fileID: 233130230573769186}
+  - component: {fileID: 5831141702331307414}
+  - component: {fileID: 2548227095307655657}
   - component: {fileID: 2959741692560880923}
   - component: {fileID: 6620824666778361455}
-  - component: {fileID: 5831141702331307414}
   - component: {fileID: 8756563493194138594}
   m_Layer: 0
   m_Name: Heal Potion
@@ -139,32 +140,6 @@ MonoBehaviour:
           m_CallState: 2
   isCustomFirstClip: 0
   firstClip: 0
---- !u!114 &2959741692560880923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911652109272387950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dbd1ace3c1ad904081142d4737005b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _impactValue: 5
---- !u!114 &6620824666778361455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911652109272387950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2370de0c442f00648b9bd9d1b1361abe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 911652109272387950}
 --- !u!114 &5831141702331307414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,8 +171,8 @@ MonoBehaviour:
           m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2959741692560880923}
-        m_MethodName: AffectTheObjectsHealth
+      - m_Target: {fileID: 2548227095307655657}
+        m_MethodName: AddToInventory
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -207,6 +182,46 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2548227095307655657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911652109272387950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8c9b901dab2cf44a9daf8f68ab704a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: potion
+  _count: 1
+--- !u!114 &2959741692560880923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911652109272387950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbd1ace3c1ad904081142d4737005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _impactValue: 5
+--- !u!114 &6620824666778361455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911652109272387950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2370de0c442f00648b9bd9d1b1361abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 911652109272387950}
 --- !u!70 &8756563493194138594
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

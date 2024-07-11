@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PixelCrew.Creatures.Hero;
+using UnityEngine;
 
 namespace PixelCrew.Components.Health
 {
@@ -13,6 +14,12 @@ namespace PixelCrew.Components.Health
             if (targetHealth != null)
                 targetHealth.ApplyHealthImpact(_impactValue);
         }
+        public void AffectHeroHealth()
+        {
+            var hero = FindObjectOfType<HeroScript>();
+            AffectTheObjectsHealth(hero.gameObject);
+        }
     }
+
 }
 

@@ -20,7 +20,7 @@ namespace PixelCrew.Creatures.Hero
             }
         }
 
-        public void OnTrowInput(InputAction.CallbackContext callback)
+        public void OnThrowInput(InputAction.CallbackContext callback)
         {
             if (callback.performed)
             {
@@ -41,6 +41,14 @@ namespace PixelCrew.Creatures.Hero
             if (callback.performed)
             {
                 _hero.Interact();
+            }
+        }
+
+        public void OnUseHealPotionInput(InputAction.CallbackContext callback)
+        {
+            if (callback.performed)
+            {
+                _hero.UseHealPotion();
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PixelCrew.Model.Definitions
 {
@@ -28,6 +29,7 @@ namespace PixelCrew.Model.Definitions
     public struct ItemDef
     {
         [SerializeField] private string _id;
+        [SerializeField] public UnityEvent OnUse;
         public string Id => _id;
         public bool IsVoid => string.IsNullOrEmpty(_id);
     }
