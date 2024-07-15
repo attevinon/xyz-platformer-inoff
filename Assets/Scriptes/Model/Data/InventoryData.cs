@@ -15,11 +15,12 @@ namespace PixelCrew.Model.Data
 
         public bool TryAdd(string id, int value)
         {
-            if (IsNoDef(id)) return false; 
+            if (IsNoDef(id)) return false;
             if (value <= 0) return false;
 
+            var itemDef = DefsFacade.I.ItemsDef.Get(id);
             var item = GetItem(id);
-            if(item == null)
+            if (item == null || !itemDef.IsStackable)
             {
                 if (_inventory.Count >= _capacity)
                 {

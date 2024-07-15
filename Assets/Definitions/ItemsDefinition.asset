@@ -14,18 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items:
   - _id: coin
+    _isStackable: 1
     OnUse:
       m_PersistentCalls:
         m_Calls: []
   - _id: sword
+    _isStackable: 1
     OnUse:
       m_PersistentCalls:
         m_Calls: []
   - _id: key
+    _isStackable: 0
     OnUse:
       m_PersistentCalls:
         m_Calls: []
   - _id: potion
+    _isStackable: 1
     OnUse:
       m_PersistentCalls:
         m_Calls:
