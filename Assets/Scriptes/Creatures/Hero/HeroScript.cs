@@ -155,9 +155,9 @@ namespace PixelCrew.Creatures.Hero
             _coinsParticles.Play();
         }
 
-        public void AddToInventory(string id, int value)
+        public bool TryAddToInventory(string id, int value)
         {
-            _session.Data.Inventory.Add(id, value);
+            return _session.Data.Inventory.TryAdd(id, value);
         }
 
         private void OnInventoryChanged(string id, int count)

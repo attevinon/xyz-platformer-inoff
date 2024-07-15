@@ -9,23 +9,30 @@ namespace PixelCrew.Model.Data
     public class InventoryData
     {
         [SerializeField] private List<InventoryItemData> _inventory = new List<InventoryItemData>();
+        [SerializeField] private int _capacity = 10;
 
         public event Action<string, int> OnInventoryChanged;
 
-        public void Add(string id, int value)
+        public bool TryAdd(string id, int value)
         {
-            if (IsNoDef(id)) return; 
-            if (value <= 0) return;
+            if (IsNoDef(id)) return false; 
+            if (value <= 0) return false;
 
             var item = GetItem(id);
             if(item == null)
             {
+                if (_inventory.Count >= _capacity)
+                {
+                    Debug.Log("Inventory is full");
+                    return false;
+                }
                 item = new InventoryItemData(id);
                 _inventory.Add(item);
             }
-            item.Value += value;
 
+            item.Value += value;
             OnInventoryChanged?.Invoke(id,Count(id));
+            return true;
         }
 
         public void Remove(string id, int value)
