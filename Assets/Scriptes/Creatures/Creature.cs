@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using PixelCrew.Components.ColliderBased;
 using PixelCrew.Components.GoBased;
+using PixelCrew.Components.Audio;
 
 namespace PixelCrew.Creatures
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(PlaySoundsComponent))]
     public class Creature : MonoBehaviour
     {
         [Header("Params:")]
@@ -26,6 +28,7 @@ namespace PixelCrew.Creatures
         protected bool _isJumping;
         private Rigidbody2D _rigidbody;
         protected Animator Animator;
+        protected PlaySoundsComponent Sounds;
 
         static readonly int isRunningKey = Animator.StringToHash("is-running");
         static readonly int isGroundedKey = Animator.StringToHash("is-grounded");
@@ -37,6 +40,7 @@ namespace PixelCrew.Creatures
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
+            Sounds = GetComponent<PlaySoundsComponent>();
         }
 
         protected virtual void Update()
@@ -113,6 +117,7 @@ namespace PixelCrew.Creatures
                 //_rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
                 yVelocity += _jumpForce;
                 _particlesSpawners.Spawn("Jump");
+                Sounds.PlaySound("jump");
             }
 
             return yVelocity;

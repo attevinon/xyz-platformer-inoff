@@ -6,6 +6,7 @@ using PixelCrew.Components.Health;
 using PixelCrew.Model;
 using PixelCrew.Utils;
 using System;
+using PixelCrew.Components.Audio;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -72,6 +73,7 @@ namespace PixelCrew.Creatures.Hero
                 yVelocity = _jumpForce;
                 _allowDoubleJump = false;
                 _particlesSpawners.Spawn("Jump");
+                Sounds.PlaySound("jump");
             }
 
             return base.CalculateJumpVelocity(yVelocity);
@@ -170,6 +172,7 @@ namespace PixelCrew.Creatures.Hero
         {
             if (SwordsCount <=0) return;
             base.StartAttackAnimation();
+            Sounds.PlaySound("mele");
         }
 
         public void StartThrowAnimation()
@@ -206,6 +209,7 @@ namespace PixelCrew.Creatures.Hero
 
         public void DoThrow()
         {
+            Sounds.PlaySound("range");
             _particlesSpawners.Spawn("Throw");
         }
 
