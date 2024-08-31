@@ -11,7 +11,7 @@ using PixelCrew.Components.Audio;
 namespace PixelCrew.Creatures.Hero
 {
     [RequireComponent(typeof(HealthComponent))]
-    public class HeroScript : Creature
+    public class HeroScript : Creature, ICanAddInInventory
     {
         [Header("Hero:")]
         [SerializeField] private float _slamdownVelocity;
@@ -157,7 +157,7 @@ namespace PixelCrew.Creatures.Hero
             _coinsParticles.Play();
         }
 
-        public bool TryAddToInventory(string id, int value)
+        public bool TryAddInInventory(string id, int value)
         {
             return _session.Data.Inventory.TryAdd(id, value);
         }

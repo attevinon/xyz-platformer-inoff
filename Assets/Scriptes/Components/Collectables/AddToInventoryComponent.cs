@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using PixelCrew.Creatures.Hero;
 using PixelCrew.Model.Definitions;
 using UnityEngine.Events;
+using PixelCrew.Utils;
 
 namespace PixelCrew.Components.Collectables
 {
@@ -13,17 +13,15 @@ namespace PixelCrew.Components.Collectables
         [SerializeField] private UnityEvent _onFail;
         public void AddToInventory(GameObject gameObject)
         {
-            if (gameObject.TryGetComponent(out HeroScript hero))
+            ICanAddInInventory collector = gameObject.GetInterface<ICanAddInInventory>();
+            bool? isSuccess = collector?.TryAddInInventory(_id, _count);
+            if (isSuccess == true)
             {
-                var isSuccess = hero.TryAddToInventory(_id, _count);
-                if(isSuccess)
-                {
-                    _onSuccess?.Invoke();
-                }
-                else
-                {
-                    _onFail?.Invoke();
-                }
+                _onSuccess?.Invoke();
+            }
+            else
+            {
+                _onFail?.Invoke();
             }
         }
     }
