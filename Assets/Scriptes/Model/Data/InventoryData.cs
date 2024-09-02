@@ -9,45 +9,87 @@ namespace PixelCrew.Model.Data
     public class InventoryData
     {
         [SerializeField] private List<InventoryItemData> _inventory = new List<InventoryItemData>();
-        [SerializeField] private int _capacity = 10;
 
         public event Action<string, int> OnInventoryChanged;
 
         public bool TryAdd(string id, int value)
         {
+            if (_inventory.Count >= DefsFacade.I.PlayerDef.InventorySize)
+            {
+                Debug.Log("Inventory is full");
+                return false;
+            }
             if (IsNoDef(id)) return false;
             if (value <= 0) return false;
 
             var itemDef = DefsFacade.I.ItemsDef.Get(id);
-            var item = GetItem(id);
-            if (item == null || !itemDef.IsStackable)
+            if (itemDef.IsStackable)
             {
-                if (_inventory.Count >= _capacity)
-                {
-                    Debug.Log("Inventory is full");
-                    return false;
-                }
+                AddStackable(id, value);
+            }
+            else
+            {
+                AddNonStackable(id, value);
+            }
+
+            OnInventoryChanged?.Invoke(id,Count(id));
+            return true;
+        }
+
+        private void AddStackable(string id, int value)
+        {
+            var item = GetItem(id);
+            if (item == null)
+            {
                 item = new InventoryItemData(id);
                 _inventory.Add(item);
             }
-
             item.Value += value;
-            OnInventoryChanged?.Invoke(id,Count(id));
-            return true;
+        }
+        private void AddNonStackable (string id, int value)
+        {
+            int slotsLeft = DefsFacade.I.PlayerDef.InventorySize - _inventory.Count;
+            int ableToAdd = Mathf.Min(slotsLeft, value);
+            for (int i = 0; i < ableToAdd; i++)
+            {  
+                _inventory.Add(new InventoryItemData(id));
+            }
+
+            if(ableToAdd < value)
+                Debug.Log("Inventory is full");
         }
 
         public void Remove(string id, int value)
         {
             if (IsNoDef(id)) return;
+
+            bool isSucces = DefsFacade.I.ItemsDef.Get(id).IsStackable ?
+                TryRemoveStackable(id, value) : TryRemoveNonStackable(id, value);
+            if(isSucces)
+                OnInventoryChanged?.Invoke(id, Count(id));
+        }
+
+        private bool TryRemoveStackable(string id, int value)
+        {
             var item = GetItem(id);
-            if (item == null) return;
-
+            if (item == null) return false;
             item.Value -= value;
-
-            if(item.Value <= 0)
+            if (item.Value <= 0)
                 _inventory.Remove(item);
 
-            OnInventoryChanged?.Invoke(id, Count(id));
+            return true;
+        }
+
+        private bool TryRemoveNonStackable(string id, int value)
+        {
+            var items = GetItems(id);
+            if(items.Length == 0) return false;
+            int itemsToRemove = Mathf.Min(items.Length, value);
+            for (int i = 0; i < itemsToRemove; i++)
+            {
+                _inventory.Remove(items[i]);
+            }
+            return true;
         }
         
         public int Count(string id)
@@ -84,6 +126,16 @@ namespace PixelCrew.Model.Data
             }
 
             return null;
+        }
+
+        private InventoryItemData[] GetItems(string id)
+        {
+            var items = new List<InventoryItemData>();
+            foreach (var item in _inventory)
+            {
+                if (item.Id == id) items.Add(item);
+            }
+            return items?.ToArray();
         }
 
         private bool IsNoDef(string id)

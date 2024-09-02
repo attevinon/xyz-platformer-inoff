@@ -10,7 +10,14 @@ public class CollectorComponent : MonoBehaviour, ICanAddInInventory
 
     public bool TryAddInInventory(string id, int value)
     {
-        _items.Add(new InventoryItemData(id) { Value = value });
+        var item = _items.Find(i => i.Id == id);
+        if(item == null)
+        {
+            item = new InventoryItemData(id);
+            _items.Add(item);
+        }
+        item.Value += value;
+        //имеет ли значение стакаемый ли предмет когда речь идёт о бочке? я думаю нет
         return true;
     }
 
