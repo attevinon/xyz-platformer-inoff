@@ -14,21 +14,17 @@ namespace PixelCrew.Model.Data
 
         public bool TryAdd(string id, int value)
         {
-            if (_inventory.Count >= DefsFacade.I.PlayerDef.InventorySize)
-            {
-                Debug.Log("Inventory is full");
-                return false;
-            }
             if (IsNoDef(id)) return false;
             if (value <= 0) return false;
 
             var itemDef = DefsFacade.I.ItemsDef.Get(id);
             if (itemDef.IsStackable)
             {
-                AddStackable(id, value);
+                TryAddStackable(id, value);
             }
             else
             {
+                if(IsInventoryFull()) return false;
                 AddNonStackable(id, value);
             }
 
@@ -36,15 +32,17 @@ namespace PixelCrew.Model.Data
             return true;
         }
 
-        private void AddStackable(string id, int value)
+        private bool TryAddStackable(string id, int value)
         {
             var item = GetItem(id);
             if (item == null)
             {
+                if (IsInventoryFull()) return false;
                 item = new InventoryItemData(id);
                 _inventory.Add(item);
             }
             item.Value += value;
+            return true;
         }
         private void AddNonStackable (string id, int value)
         {
@@ -145,6 +143,16 @@ namespace PixelCrew.Model.Data
                 Debug.LogWarning($"Definition for item with id={id} is not found");
 
             return itemDef.IsVoid;
+        }
+
+        private bool IsInventoryFull()
+        {
+            if (_inventory.Count >= DefsFacade.I.PlayerDef.InventorySize)
+            {
+                Debug.Log("Inventory is full");
+                return true;
+            }
+            return false;
         }
     }
 
