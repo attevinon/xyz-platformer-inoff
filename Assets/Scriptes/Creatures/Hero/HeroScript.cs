@@ -56,18 +56,50 @@ namespace PixelCrew.Creatures.Hero
             base.Update();
         }
 
-        protected override float CalculateYVelocity()
+        private void FixedUpdate()
+        {
+            float xVelocity = _direction.x * _speed;
+            float yVelocity = CalculateYVelocity();
+
+            _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
+
+            SetAnimations();
+        }
+
+        protected float CalculateYVelocity()
         {
             if (_isGrounded)
             {
                 _allowDoubleJump = true;
             }
 
-            return base.CalculateYVelocity();
+            float yVelocity = _rigidbody.velocity.y;
+            bool isJumpPressing = _direction.y > 0;
+
+            if (_isGrounded)
+            {
+                _isJumping = false;
+            }
+
+            if (isJumpPressing)
+            {
+                //говніна
+                _isJumping = true;
+                bool isNotGoingUp = _rigidbody.velocity.y <= 0.001f;
+                yVelocity = isNotGoingUp ? CalculateJumpVelocity(yVelocity) : yVelocity;
+
+            }
+            else if (_rigidbody.velocity.y > 0 && _isJumping) //падение
+            {
+                yVelocity *= 0.5f;
+            }
+
+            return yVelocity;
         }
 
-        protected override float CalculateJumpVelocity(float yVelocity)
+        protected float CalculateJumpVelocity(float yVelocity)
         {
+
             if ( !_isGrounded && _allowDoubleJump)
             {
                 yVelocity = _jumpForce;
@@ -76,7 +108,14 @@ namespace PixelCrew.Creatures.Hero
                 Sounds.PlaySound("jump");
             }
 
-            return base.CalculateJumpVelocity(yVelocity);
+            if (_isGrounded)
+            {
+                yVelocity += _jumpForce;
+                _particlesSpawners.Spawn("Jump");
+                Sounds.PlaySound("jump");
+            }
+
+            return yVelocity;
         }
 
         public void SpawnRunDust()
