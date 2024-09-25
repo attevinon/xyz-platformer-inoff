@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using PixelCrew.Components.ColliderBased;
 using PixelCrew.Components.GoBased;
 using PixelCrew.Creatures.Mobs.Patrolling;
@@ -9,7 +10,6 @@ namespace PixelCrew.Creatures.Mobs
     [RequireComponent(typeof(Creature))]
     [RequireComponent(typeof(Patrol))]
     [RequireComponent(typeof(Animator))]
-    [RequireComponent(typeof(CapsuleCollider2D))]
     [RequireComponent(typeof(SpawnListComponent))]
     public class MobAI : MonoBehaviour
     {
@@ -28,7 +28,6 @@ namespace PixelCrew.Creatures.Mobs
         private Patrol _patrol;
         private SpawnListComponent _particles;
         private Animator _animator;
-        private CapsuleCollider2D _collider;
 
         private readonly int isDeadKey = Animator.StringToHash("is-dead"); 
 
@@ -38,7 +37,6 @@ namespace PixelCrew.Creatures.Mobs
             _creature = GetComponent<Creature>();
             _particles = GetComponent<SpawnListComponent>();
             _patrol = GetComponent<Patrol>();
-            _collider = GetComponent<CapsuleCollider2D>();
         }
 
         void Start()
@@ -107,15 +105,19 @@ namespace PixelCrew.Creatures.Mobs
         {
             _isDead = true;
             _creature.SetDirection(Vector2.zero);
-            _collider.direction = CapsuleDirection2D.Horizontal;
-            _animator.SetBool(isDeadKey, true);
+
+            if(TryGetComponent(out CapsuleCollider2D collider))
+            {
+                collider.direction = CapsuleDirection2D.Horizontal;
+                this.gameObject.layer = LayerMask.NameToLayer("Trash");
+            }
+
+            _animator.SetBool(isDeadKey, true); 
 
             if (_currentCoroutine != null)
             {
                 StopCoroutine(_currentCoroutine);
             }
-
-            this.gameObject.layer = LayerMask.NameToLayer("Trash");
         }
 
         private void StartState(IEnumerator coroutine)
