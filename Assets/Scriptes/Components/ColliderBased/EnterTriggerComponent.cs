@@ -1,35 +1,15 @@
 using UnityEngine;
-using PixelCrew.Utils;
 
 namespace PixelCrew.Components.ColliderBased
 {
-    public class EnterTriggerComponent : MonoBehaviour
+    public class EnterTriggerComponent : BaseEnterComponent
     {
-        [SerializeField] private LayerMask _layer = ~0;
-        [SerializeField] private string[] _tags;
-        [SerializeField] private EnterEvent _action;
-
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (_layer != ~0)
+            if (IsInConditions(collider.gameObject))
             {
-                if (!collision.gameObject.IsInLayer(_layer)) return;
-                if(_tags?.Length == 0)
-                {
-                    _action?.Invoke(collision.gameObject);
-                    return;
-                }
+                _action?.Invoke(collider.gameObject);
             }
-
-            foreach (var tag in _tags)
-            {
-                if (collision.gameObject.CompareTag(tag))
-                {
-                    _action?.Invoke(collision.gameObject);
-                    return;
-                }
-            }
-
         }
     }
 }
