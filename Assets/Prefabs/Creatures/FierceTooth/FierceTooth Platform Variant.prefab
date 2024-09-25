@@ -84,8 +84,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6087202584541998069, guid: aa12604b449a0704a82018cc542f7298,
         type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087202584541998069, guid: aa12604b449a0704a82018cc542f7298,
+        type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087202584541998069, guid: aa12604b449a0704a82018cc542f7298,
+        type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1426206329014150727}
+    - target: {fileID: 6087202584541998069, guid: aa12604b449a0704a82018cc542f7298,
+        type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087202584541998069, guid: aa12604b449a0704a82018cc542f7298,
+        type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_layer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087202584541998069, guid: aa12604b449a0704a82018cc542f7298,
+        type: 3}
       propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087202584541998069, guid: aa12604b449a0704a82018cc542f7298,
+        type: 3}
+      propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8580514607236161028, guid: aa12604b449a0704a82018cc542f7298,
         type: 3}

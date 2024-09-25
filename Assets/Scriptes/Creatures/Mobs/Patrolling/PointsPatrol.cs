@@ -35,7 +35,7 @@ namespace PixelCrew.Creatures.Mobs.Patrolling
                 direction.y = 0;
                 _creature.SetDirection(direction.normalized);
 
-                yield return null;
+                yield return new WaitForEndOfFrame();
             }
         }
 

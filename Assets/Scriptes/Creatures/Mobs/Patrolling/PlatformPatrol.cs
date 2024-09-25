@@ -21,7 +21,7 @@ namespace PixelCrew.Creatures.Mobs.Patrolling
         public override IEnumerator DoPatrol()
         {
             while (enabled)
-            {
+            { 
                 if (!_nextStepChecker.IsTouchingLayer || _obstacleChecker.IsTouchingLayer)
                 {
                     _creature.SetDirection(Vector2.zero);
@@ -30,8 +30,7 @@ namespace PixelCrew.Creatures.Mobs.Patrolling
                 }
 
                 _creature.SetDirection(new Vector2(_directionX, 0));
-
-                yield return null;
+                  yield return new WaitForFixedUpdate();
             }
         }
     }
