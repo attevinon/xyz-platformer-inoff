@@ -12,7 +12,6 @@ namespace PixelCrew.Creatures
     {
         [Header("Params:")]
         [SerializeField] protected float _speed;
-        [SerializeField] protected float _jumpForce;
         [SerializeField] private float _jumpDamageForce;
         [SerializeField] private bool _isLooksToTheRight;
 
@@ -25,7 +24,6 @@ namespace PixelCrew.Creatures
 
         protected Vector2 _direction;
         protected bool _isGrounded;
-        protected bool _isJumping;
         protected Rigidbody2D _rigidbody;
         protected Animator Animator;
         protected PlaySoundsComponent Sounds;
@@ -57,7 +55,7 @@ namespace PixelCrew.Creatures
         }
 
         protected void SetAnimations()
-        {
+        { 
             Animator.SetBool(isRunningKey, _direction.x != 0);
             Animator.SetBool(isGroundedKey, _isGrounded);
             Animator.SetFloat(verticalVelocityKey, _rigidbody.velocity.y);
@@ -89,7 +87,6 @@ namespace PixelCrew.Creatures
 
         public virtual void TakeDamage()
         {
-            _isJumping = false;
             Animator.SetTrigger(hitKey);
             _rigidbody.velocity = Vector2.up * _jumpDamageForce;
         }
@@ -101,7 +98,6 @@ namespace PixelCrew.Creatures
 
         private void OnAttackRange()
         {
-            _particlesSpawners.Spawn("Attack");
             _attackRange.CheckOverlap();
         }
     }

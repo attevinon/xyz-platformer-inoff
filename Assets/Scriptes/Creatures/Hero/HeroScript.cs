@@ -5,8 +5,6 @@ using PixelCrew.Components.Interactions;
 using PixelCrew.Components.Health;
 using PixelCrew.Model;
 using PixelCrew.Utils;
-using System;
-using PixelCrew.Components.Audio;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -14,6 +12,7 @@ namespace PixelCrew.Creatures.Hero
     public class HeroScript : Creature, ICanAddInInventory
     {
         [Header("Hero:")]
+        [SerializeField] private float _jumpForce;
         [SerializeField] private float _slamdownVelocity;
         [SerializeField] protected LayerMask _groundLayer;
         [SerializeField] private CheckCircleOverlap _interactionCheck;
@@ -26,6 +25,7 @@ namespace PixelCrew.Creatures.Hero
         [SerializeField] private RuntimeAnimatorController _unarmed;
         [SerializeField] private RuntimeAnimatorController _armed;
 
+        private bool _isJumping;
         private bool _allowDoubleJump;
         private int SwordsCount => _session.Data.Inventory.Count(Constants.ItemsId.SWORD);
         private int CoinsCount => _session.Data.Inventory.Count(Constants.ItemsId.COIN);
@@ -83,7 +83,6 @@ namespace PixelCrew.Creatures.Hero
 
             if (isJumpPressing)
             {
-                //говніна
                 _isJumping = true;
                 bool isNotGoingUp = _rigidbody.velocity.y <= 0.001f;
                 yVelocity = isNotGoingUp ? CalculateJumpVelocity(yVelocity) : yVelocity;
@@ -140,9 +139,6 @@ namespace PixelCrew.Creatures.Hero
             _interactionCheck.CheckOverlap();
         }
 
-        //я искренне не поняла зачем лектор сделал отдельный класс для этого метода,
-        //мне кажется от этого теряется смысл рефакторинга
-        //поэтому я поместила этот метод сюда
         public void DoInteraction(GameObject go)
         {
             var interactable = go.GetComponent<InteractableComponent>();
@@ -170,14 +166,12 @@ namespace PixelCrew.Creatures.Hero
         public void OnHealthChanged(int health)
         {
             _session.Data.Health = health;
-        }
-        public void TakeHealing()
-        {
-            //хочу сюда анимацию добавить
+            Debug.Log("Health = " + health);
         }
 
         public override void TakeDamage()
         {
+            _isJumping = false;
             base.TakeDamage();
             if (CoinsCount > 0)
                 DropCoins();
