@@ -4930,7 +4930,7 @@ MonoBehaviour:
   _groundCheker: {fileID: 2244786681510140030}
   _attackRange: {fileID: 186205765152694579}
   _particlesSpawners: {fileID: 7300611380473513128}
-  _jumpForce: 9
+  _jumpForce: 8
   _slamdownVelocity: 8
   _groundLayer:
     serializedVersion: 2
