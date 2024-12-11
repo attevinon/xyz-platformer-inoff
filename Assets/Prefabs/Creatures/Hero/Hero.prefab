@@ -4829,7 +4829,7 @@ GameObject:
   - component: {fileID: 2244786681484811424}
   - component: {fileID: 2244786681484811425}
   - component: {fileID: 4502786918791685396}
-  - component: {fileID: 2244786681484811430}
+  - component: {fileID: 8444442303589904190}
   - component: {fileID: 2244786681484811431}
   m_Layer: 14
   m_Name: Hero
@@ -4930,7 +4930,7 @@ MonoBehaviour:
   _groundCheker: {fileID: 2244786681510140030}
   _attackRange: {fileID: 186205765152694579}
   _particlesSpawners: {fileID: 7300611380473513128}
-  _jumpForce: 8
+  _jumpForce: 7.5
   _slamdownVelocity: 8
   _groundLayer:
     serializedVersion: 2
@@ -5221,8 +5221,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &2244786681484811430
-CapsuleCollider2D:
+--- !u!60 &8444442303589904190
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5234,9 +5234,25 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4375}
-  m_Size: {x: 0.75, y: 0.875}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.625, y: 0.25, z: 0.625, w: 0.125}
+    pivot: {x: 0.5, y: 0.2}
+    oldSize: {x: 2, y: 1.25}
+    newSize: {x: 2, y: 1.25}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.14, y: 0.005}
+      - {x: 0.27, y: 0.21}
+      - {x: 0.18, y: 0.82}
+      - {x: -0.18, y: 0.82}
+      - {x: -0.22, y: 0.5}
+      - {x: -0.3, y: 0.2}
+      - {x: -0.2, y: 0.005}
 --- !u!50 &2244786681484811431
 Rigidbody2D:
   serializedVersion: 4

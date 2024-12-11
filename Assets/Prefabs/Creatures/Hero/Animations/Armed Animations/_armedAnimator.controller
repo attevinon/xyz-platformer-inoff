@@ -583,7 +583,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: vertical-velocity
-    m_EventTreshold: 0.05
+    m_EventTreshold: 0.02
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6782944837013854183}
   m_Solo: 0
@@ -1025,7 +1025,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: vertical-velocity
-    m_EventTreshold: 0.05
+    m_EventTreshold: 0.02
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6782944837013854183}
   m_Solo: 0
