@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1847943548842574387, guid: 41ae151e7cba3604789cfb7ff5e2d0e8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2132212150455981352, guid: 41ae151e7cba3604789cfb7ff5e2d0e8,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y

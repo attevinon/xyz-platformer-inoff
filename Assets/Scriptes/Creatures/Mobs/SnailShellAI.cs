@@ -69,10 +69,11 @@ namespace PixelCrew.Creatures.Mobs
         {
             _onDie?.Invoke();
             _direction = Vector2.zero;
+            this.gameObject.layer = LayerMask.NameToLayer("Trash");
             _rigidbody.freezeRotation = false;
             _rigidbody.AddForce(new Vector2(0, _jumpDeathForce), ForceMode2D.Impulse);
             _rigidbody.AddTorque(_rotationDeathForce, ForceMode2D.Impulse);
-            this.gameObject.layer = LayerMask.NameToLayer("Trash");
+            this.enabled = false;
         }
     }
 
