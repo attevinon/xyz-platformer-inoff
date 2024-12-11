@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer:
     serializedVersion: 2
-    m_Bits: 21760
+    m_Bits: 20736
   _tags: []
   _action:
     m_PersistentCalls:
