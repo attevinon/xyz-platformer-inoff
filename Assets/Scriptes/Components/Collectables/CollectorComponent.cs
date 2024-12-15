@@ -2,10 +2,13 @@
 using UnityEngine;
 using PixelCrew.Model;
 using PixelCrew.Model.Data;
+using UnityEngine.Events;
 
 public class CollectorComponent : MonoBehaviour, ICanAddInInventory
 {
     [SerializeField] private List<InventoryItemData> _items = new List<InventoryItemData>();
+    [SerializeField] private UnityEvent _onFirstFilled;
+    [SerializeField] private UnityEvent _onEmpty;
     private GameSession _gameSession;
 
     public bool TryAddInInventory(string id, int value)
@@ -13,6 +16,7 @@ public class CollectorComponent : MonoBehaviour, ICanAddInInventory
         var item = _items.Find(i => i.Id == id);
         if(item == null)
         {
+            if (_items.Count == 0) _onFirstFilled?.Invoke();
             item = new InventoryItemData(id);
             _items.Add(item);
         }
@@ -34,5 +38,6 @@ public class CollectorComponent : MonoBehaviour, ICanAddInInventory
             _items.Remove(item);
         }
         _items.Clear();
+        _onEmpty?.Invoke();
     }
 }
