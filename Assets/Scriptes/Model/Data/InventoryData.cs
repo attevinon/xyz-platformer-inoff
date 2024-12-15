@@ -50,7 +50,7 @@ namespace PixelCrew.Model.Data
             int ableToAdd = Mathf.Min(slotsLeft, value);
             for (int i = 0; i < ableToAdd; i++)
             {  
-                _inventory.Add(new InventoryItemData(id));
+                _inventory.Add(new InventoryItemData(id) {Value = 1});
             }
 
             if(ableToAdd < value)
