@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4dffc4d561ea644a43a67c76da3ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flip: 0
+  _flip: 1
   Speed: 6
 --- !u!114 &7507102173906975928
 MonoBehaviour:
@@ -137,6 +137,8 @@ MonoBehaviour:
     _onComplete:
       m_PersistentCalls:
         m_Calls: []
+  isCustomFirstClip: 0
+  firstClip: 0
 --- !u!114 &6568941090452818623
 MonoBehaviour:
   m_ObjectHideFlags: 0

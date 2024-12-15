@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbaa60351b6ffa4d8dd00f9fda4781e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flip: 1
+  _flip: 0
   Speed: 0.05
   _frequency: 5
   _amplitude: 0.15

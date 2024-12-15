@@ -18,7 +18,9 @@ namespace PixelCrew.Creatures.Weapons
 
         protected virtual void Start()
         {
-            Direction = this.transform.localScale.x > 0 ? -1 : 1;
+            Direction = this.transform.lossyScale.x > 0 ? -1 : 1;
+            Direction = _flip ? -Direction : Direction;
+
         }
     }
 }
