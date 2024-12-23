@@ -11295,6 +11295,11 @@ PrefabInstance:
       propertyPath: _requiredItems.Array.data[1].Value
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3371551699643136289, guid: dbf5374bb69e6234cb5027f56630c950,
+        type: 3}
+      propertyPath: _sceneName
+      value: Level_2
+      objectReference: {fileID: 0}
     - target: {fileID: 5354450782886961234, guid: dbf5374bb69e6234cb5027f56630c950,
         type: 3}
       propertyPath: m_Name
