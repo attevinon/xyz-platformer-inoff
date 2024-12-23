@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f10624458964e14ca0b06deeaaa3116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vision: {fileID: 4395999252742085752}
+  _visionRaycastChecker: {fileID: 3016478525537745971}
   _attackRange: {fileID: 3392532467175136405}
   _attackCooldown: 1.5
   _missCooldown: 1
@@ -750,8 +750,9 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 16384
-  _tags: []
-  _areTagsNeeded: 0
+  _tags:
+  - Player
+  _areTagsNeeded: 1
   _onOverlap:
     m_PersistentCalls:
       m_Calls:
@@ -834,8 +835,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7738899647667438637}
-  - component: {fileID: 4395999252742085752}
   - component: {fileID: 6912852910260402340}
+  - component: {fileID: 3016478525537745971}
   - component: {fileID: 2664435198415163785}
   m_Layer: 0
   m_Name: Vision
@@ -852,27 +853,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3712567951744643781}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9, y: 0, z: 0}
+  m_LocalPosition: {x: -1.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1903273392746062108}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4395999252742085752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3712567951744643781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7883456294aac6048a8380fa21b072af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _layer:
-    serializedVersion: 2
-    m_Bits: 16384
 --- !u!114 &6912852910260402340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,9 +874,42 @@ MonoBehaviour:
   _layer:
     serializedVersion: 2
     m_Bits: 16384
-  _tags:
-  - Player
+  _tags: []
   _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3016478525537745971}
+        m_MethodName: Raycast
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3016478525537745971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712567951744643781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8ee5e59b97f4444b525f2b23a8a89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layersToCheck:
+    serializedVersion: 2
+    m_Bits: 20736
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  _originY: 0.68
+  _flip: 0
+  _onRaycastHitTarget:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2940285590223057711}
@@ -917,7 +936,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4000001, y: 0.34906816}
+  m_Offset: {x: 0, y: 0.35}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -928,7 +947,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 0.6981363}
+  m_Size: {x: 4, y: 0.7}
   m_EdgeRadius: 0
 --- !u!1 &3891814540430062553
 GameObject:
@@ -990,7 +1009,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0076, y: 0.0336}
+  m_Offset: {x: -0.0076, y: 0.03}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1001,7 +1020,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.085, y: 0.68}
+  m_Size: {x: 0.085, y: 0.6}
   m_EdgeRadius: 0
 --- !u!1 &7797638181642291499
 GameObject:

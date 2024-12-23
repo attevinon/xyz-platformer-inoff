@@ -53,7 +53,7 @@ namespace PixelCrew.Components.ColliderBased
                 _layerMask);
 
             for (int i = 0; i < size; i++)
-            {
+            {  
                 var overlap = _overlapResult[i];
                 bool isInTags = _tags.Any(tag => overlap.CompareTag(tag));
                 if (isInTags)

@@ -13,7 +13,7 @@ namespace PixelCrew.Creatures.Mobs
     [RequireComponent(typeof(SpawnListComponent))]
     public class MobAI : MonoBehaviour
     {
-        [SerializeField] private LayerChecker _vision;
+        [SerializeField] private CheckRaycast _visionRaycastChecker;
         [SerializeField] private LayerChecker _attackRange;
 
         [SerializeField] private float _attackCooldown;
@@ -70,7 +70,7 @@ namespace PixelCrew.Creatures.Mobs
 
         private IEnumerator GoToTarget()
         {
-            while (_vision.IsTouchingLayer)
+            while (_visionRaycastChecker.IsRaycastHitTarget())
             {
                 if (_attackRange.IsTouchingLayer)
                 {
