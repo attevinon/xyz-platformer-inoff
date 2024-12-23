@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2554840488321717121}
   - component: {fileID: 6496678230143178295}
-  - component: {fileID: -8026516479679714951}
+  - component: {fileID: 8048356863775622491}
   - component: {fileID: 7507102173906975928}
   - component: {fileID: 6568941090452818623}
   - component: {fileID: 4345583738033711090}
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8026516479679714951
+--- !u!114 &8048356863775622491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,10 +99,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 882805240817560811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d0fba50c61c374da07f53f0983d6e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a4dffc4d561ea644a43a67c76da3ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.14
+  _flip: 1
+  Speed: 6
 --- !u!114 &7507102173906975928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +137,8 @@ MonoBehaviour:
     _onComplete:
       m_PersistentCalls:
         m_Calls: []
+  isCustomFirstClip: 0
+  firstClip: 0
 --- !u!114 &6568941090452818623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,14 +274,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882805240817560811}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1

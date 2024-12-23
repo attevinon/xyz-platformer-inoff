@@ -1,8 +1,7 @@
-﻿using PixelCrew.Creatures;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PixelCrew
+namespace PixelCrew.Creatures.Hero
 {
     public class HeroInputReader : MonoBehaviour
     {
@@ -21,7 +20,7 @@ namespace PixelCrew
             }
         }
 
-        public void OnTrowInput(InputAction.CallbackContext callback)
+        public void OnThrowInput(InputAction.CallbackContext callback)
         {
             if (callback.performed)
             {
@@ -42,6 +41,14 @@ namespace PixelCrew
             if (callback.performed)
             {
                 _hero.Interact();
+            }
+        }
+
+        public void OnUseHealPotionInput(InputAction.CallbackContext callback)
+        {
+            if (callback.performed)
+            {
+                _hero.UseHealPotion();
             }
         }
 

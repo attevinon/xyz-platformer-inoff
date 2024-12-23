@@ -1,37 +1,41 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class TimerComponent : MonoBehaviour
+namespace PixelCrew.Components
 {
-    [SerializeField] private float _delayTime;
-    [SerializeField] private UnityEvent _onTimeIsUp;
-
-    private float _delayTimeRunning;
-
-    void Start()
+    public class TimerComponent : MonoBehaviour
     {
-        this.enabled = false;
-    }
+        [SerializeField] private float _delayTime;
+        [SerializeField] private UnityEvent _onTimeIsUp;
 
-    void Update()
-    {
-        _delayTimeRunning -= Time.deltaTime;
+        private float _delayTimeRunning;
 
-        if(_delayTimeRunning <= 0)
+        void Start()
         {
-            _onTimeIsUp?.Invoke();
+            this.enabled = false;
+        }
+
+        void Update()
+        {
+            _delayTimeRunning -= Time.deltaTime;
+
+            if (_delayTimeRunning <= 0)
+            {
+                _onTimeIsUp?.Invoke();
+                this.enabled = false;
+            }
+        }
+
+        public void ActivateTimer()
+        {
+            _delayTimeRunning = _delayTime;
+            this.enabled = true;
+        }
+
+        public void DeactivateTimer()
+        {
             this.enabled = false;
         }
     }
 
-    public void ActivateTimer()
-    {
-        _delayTimeRunning = _delayTime;
-        this.enabled = true;
-    }
-
-    public void DeactivateTimer()
-    {
-        this.enabled = false;
-    }
 }

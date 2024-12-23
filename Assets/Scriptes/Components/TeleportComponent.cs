@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
+using PixelCrew.Creatures.Hero;
 
-namespace PixelCrew
+namespace PixelCrew.Components
 {
     public class TeleportComponent : MonoBehaviour
     {
